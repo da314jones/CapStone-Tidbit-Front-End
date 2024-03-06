@@ -1,7 +1,7 @@
 import React from 'react';
 import VideoList from '../Components/VideoList';
 
-function Index() {
+export default function Index() {
   return (
     <div>
       <h2>Full List of Videos</h2>
@@ -10,4 +10,3 @@ function Index() {
   )
 }
 
-export default Index;

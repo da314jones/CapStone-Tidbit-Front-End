@@ -1,7 +1,8 @@
 // VideoCard.jsx - 
 import React from 'react';
 import './VideoCard.css';
-const VideoCard = ({ title, thumbnailUrl, duration, views }) => {
+
+export default function VideoCard({ title, thumbnailUrl, duration, views })  {
   return (
     <div className="video-card">
       <img className="thumbnail" src={thumbnailUrl} alt={title} />
@@ -15,4 +16,3 @@ const VideoCard = ({ title, thumbnailUrl, duration, views }) => {
     </div>
   );
 };
-export default VideoCard;

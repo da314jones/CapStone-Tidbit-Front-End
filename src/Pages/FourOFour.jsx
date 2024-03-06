@@ -1,6 +1,6 @@
 import React from 'react'
 
-function FourOFour() {
+export default function FourOFour() {
   return (
     <div>
       
@@ -8,4 +8,3 @@ function FourOFour() {
   )
 }
 
-export default FourOFour

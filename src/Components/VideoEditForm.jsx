@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-function VideoEditForm() {
+export default function VideoEditForm() {
     // const [file, setFile ] = useState(null);
     const [category, setCategory] = useState([]);
     const [topic, setTopic] = useState([]);
@@ -57,4 +57,3 @@ function VideoEditForm() {
   )
 }
 
-export default VideoEditForm;

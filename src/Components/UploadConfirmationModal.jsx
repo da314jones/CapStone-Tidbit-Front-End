@@ -1,10 +1,9 @@
 import React from 'react'
 
-export default function NavBar() {
+export default function UploadConfirmationModal() {
   return (
     <div>
       
     </div>
   )
 }
-

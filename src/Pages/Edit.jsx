@@ -1,7 +1,7 @@
 import React from 'react';
 import VideoEditForm from "../Components/VideoEditForm";
 
-function Edit() {
+export default function Edit() {
   return (
     <div>
       <VideoEditForm />
@@ -9,4 +9,3 @@ function Edit() {
   )
 }
 
-export default Edit;

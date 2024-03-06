@@ -1,6 +1,6 @@
 import React from 'react'
 
-function VideoList() {
+export default function VideoList() {
   return (
     <div>
       
@@ -8,5 +8,4 @@ function VideoList() {
   )
 }
 
-export default VideoList
 

@@ -1,6 +1,6 @@
 import React from 'react'
 
-function ContentCreator() {
+export default function ContentCreator() {
   return (
     <div>
       
@@ -8,4 +8,3 @@ function ContentCreator() {
   )
 }
 
-export default ContentCreator

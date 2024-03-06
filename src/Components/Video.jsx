@@ -1,6 +1,6 @@
 // import React, { useState, useEffect } from 'react';
 
-// const VideoComponent = ({ apiKey, sessionId, token }) => {
+// export default const VideoComponent = ({ apiKey, sessionId, token }) => {
 //   const [otSdkReady, setOtSdkReady] = useState(false);
 //   const [sessionStarted, setSessionStarted] = useState(false);
 

@@ -2,7 +2,8 @@
 import {React, useState, useEffect } from "react";
 import { Link, useParams, useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_BASE_URL;
-function VideoDetails() {
+
+export default function VideoDetails() {
   const [video, setVideo] = useState([]);
   const { id } = useParams();
   const navigate = useNavigate();
@@ -43,4 +44,3 @@ function VideoDetails() {
     </div>
   );
 }
-export default VideoDetails;

@@ -2,7 +2,7 @@ import React from 'react';
 import VideoDetails from "../Components/VideoDetails";
 // Show Video by ID 
 
-function Show() {
+export default function Show() {
   return (
     <div>
      <VideoDetails />
@@ -10,4 +10,3 @@ function Show() {
   )
 }
 
-export default Show;

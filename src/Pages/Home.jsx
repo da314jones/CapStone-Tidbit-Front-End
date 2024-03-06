@@ -3,7 +3,7 @@ import './Home.css';
 import guitar from '../images/guitar.jpeg';
 import Tidbit from '../images/Tidbit.png';
 
-function Home() {
+export default function Home() {
   return (
     <div className="home-container">
       <img src={Tidbit} alt="Tidbit Logo" className="tidbit-logo" />
@@ -20,4 +20,3 @@ function Home() {
   )
 }
 
-export default Home;

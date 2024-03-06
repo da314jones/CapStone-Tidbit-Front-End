@@ -1,0 +1,40 @@
+.video-card {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: 20px;
+  }
+  
+  .thumbnail {
+    width: 100%;
+  }
+  
+  .video-info {
+    padding: 10px;
+  }
+  
+  .title {
+    margin: 0;
+    font-size: 16px;
+    line-height: 1.2;
+  }
+  
+  .metadata {
+    margin-top: 5px;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  .duration::before {
+    content: 'Duration: ';
+    font-weight: bold;
+  }
+  
+  .views::before {
+    content: ' • ';
+  }
+  
+  .views::after {
+    content: ' views';
+  }
+  
