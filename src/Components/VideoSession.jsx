@@ -107,11 +107,9 @@ export default function VideoSession() {
           <OTSubscriber />
         </OTStreams>
       </OTSession>
-      {isRecording && <button onClick={startRecording}>Start Recording</button>}
-      {isRecording && (
-        <button onClick={() => setCameraEnabled(true)}>Start Camera</button>
-      )}
-      <button onClick={() => setCameraEnabled(false)}>Stop Camera</button>
+      {!isRecording && <button onClick={startRecording}>Start Recording</button>}
+      {isRecording && <button onClick={stopRecording}>Stop Recording</button>}
+      <button onClick={() => setCameraEnabled(false)}>{cameraEnabled ? "Stop Camera" : "Stop Camera"}</button>
       {/* {error && <div className="error">{error}</div>} */}
     </div>
   );
