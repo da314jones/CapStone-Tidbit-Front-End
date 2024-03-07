@@ -8,6 +8,8 @@ import New from "./Pages/New";
 import Show from "./Pages/Show";
 import FourOFour from "./Pages/FourOFour";
 import VideoSession from "./Components/VideoSession";
+import Video from "./Components/Video";
+
 function App() {
   
 
@@ -17,6 +19,7 @@ function App() {
         <Router>
           <Routes>
           <Route path="/video-session" element={<VideoSession />} />
+          <Route path="/test" element={<Video />} />
             <Route path="/" element={<Home />} />
             {/* <Route path="/videos" element={<Index />} /> */}
             <Route path="/videos/:id" element={<Show />} />

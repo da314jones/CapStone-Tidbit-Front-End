@@ -1,64 +1,118 @@
-// import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
+import { OTSession, OTPublisher, OTStreams, OTSubscriber } from 'opentok-react';
 
-// export default const VideoComponent = ({ apiKey, sessionId, token }) => {
-//   const [otSdkReady, setOtSdkReady] = useState(false);
-//   const [sessionStarted, setSessionStarted] = useState(false);
+const VideoSession = () => {
+  const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
+  const API = import.meta.env.VITE_API_URL;
+  const [sessionId, setSessionId] = useState('');
+  const [token, setToken] = useState('');
+  const [otSdkReady, setOtSdkReady] = useState(false);
+  const [isConnected, setIsConnected] = useState(false);
+  const [isRecording, setIsRecording] = useState(false);
 
-//   // Dynamically load the OpenTok SDK
-//   useEffect(() => {
-//     const script = document.createElement('script');
-//     script.src = 'https://static.opentok.com/v2/js/opentok.min.js';
-//     script.async = true;
-//     script.onload = () => setOtSdkReady(true);
-//     document.head.appendChild(script);
+  // Dynamically load the OpenTok SDK
+  useEffect(() => {
+    const script = document.createElement('script');
+    script.src = 'https://static.opentok.com/v2/js/opentok.min.js';
+    script.async = true;
+    script.onload = () => setOtSdkReady(true);
+    document.head.appendChild(script);
+    return () => document.head.removeChild(script);
+  }, []);
 
-//     // Cleanup the script when the component unmounts
-//     return () => document.head.removeChild(script);
-//   }, []);
+  const fetchSessionAndToken = async () => {
+    try {
+      const sessionRes = await fetch(`${API}/videos/session`, { method: 'POST' });
+      if (!sessionRes.ok) throw new Error('Failed to fetch session');
+      const sessionData = await sessionRes.json();
 
-//   const startSession = () => {
-//     if (otSdkReady && !sessionStarted && window.OT) {
-//       const session = window.OT.initSession(apiKey, sessionId);
-//       const publisher = window.OT.initPublisher('publisher', {
-//         insertMode: 'append',
-//         width: '100%',
-//         height: '100%',
-//       });
+      const tokenRes = await fetch(`${API}/videos/token/${sessionData.sessionId}`);
+      if (!tokenRes.ok) throw new Error('Failed to fetch token');
+      const tokenData = await tokenRes.json();
 
-//       session.connect(token, (error) => {
-//         if (error) {
-//           console.error('Error connecting to session:', error);
-//         } else {
-//           session.publish(publisher, (publishError) => {
-//             if (publishError) {
-//               console.error('Error publishing:', publishError);
-//             } else {
-//               setSessionStarted(true); // Update state to reflect that the session has started
-//             }
-//           });
-//         }
-//       });
-//     }
-//   };
+      setSessionId(sessionData.sessionId);
+      setToken(tokenData.token);
+    } catch (error) {
+      console.error('Error fetching session and token:', error);
+    }
+  };
 
-//   return (
-//     <div>
-//       <div id="publisher"></div>
-//       {otSdkReady && !sessionStarted ? (
-//         <button onClick={startSession}>Start Session</button>
-//       ) : (
-//         <p>Loading...</p>
-//       )}
-//       return (
-//   <div>
-//     {/* Your OTSession and OTPublisher components */}
-//     <button onClick={startRecording}>Start Recording</button>
-//     <button onClick={stopRecording}>Stop Recording</button>
-//   </div>
-// );
+  const startSession = async () => {
+    await fetchSessionAndToken();
+    setIsConnected(true);
+  };
 
-//     </div>
-//   );
-// };
+  const startRecording = async () => {
+    try {
+      const res = await fetch(`${API}/videos/start-recording`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ sessionId }),
+      });
+      if (!res.ok) throw new Error('Failed to start recording');
+      setIsRecording(true);
+    } catch (error) {
+      console.error('Error starting recording:', error);
+    }
+  };
 
-// export default VideoComponent;
+  const stopRecording = async () => {
+    try {
+      // Ensure `archiveId` is correctly obtained and passed
+      const res = await fetch(`${API}/videos/stop-recording`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ archiveId }), // Assuming `archiveId` is needed and available
+      });
+      if (!res.ok) {
+        // Parse and log the response body for more details on the error
+        const errorBody = await res.json();
+        console.error('Failed to stop recording:', errorBody);
+        throw new Error('Failed to stop recording');
+      }
+      setIsRecording(false);
+      // Optionally, clear `archiveId` after stopping the recording
+      setArchiveId('');
+    } catch (error) {
+      console.error('Error stopping recording:', error);
+    }
+  };
+  
+
+  const endSession = () => {
+    // Logic to clean up and reset state
+    setIsConnected(false);
+    setIsRecording(false);
+    setSessionId('');
+    setToken('');
+  };
+
+  if (!otSdkReady) {
+    return <div>Loading OpenTok SDK...</div>;
+  }
+
+  return (
+    <div className="video-container">
+      {isConnected ? (
+        <>
+          <OTSession apiKey={apiKey} sessionId={sessionId} token={token} onError={(error) => console.error(error)}>
+            <OTPublisher />
+            <OTStreams>
+              <OTSubscriber />
+            </OTStreams>
+          </OTSession>
+          {!isRecording ? (
+            <button onClick={startRecording}>Start Recording</button>
+          ) : (
+            <button onClick={stopRecording}>Stop Recording</button>
+          )}
+          <button onClick={endSession}>End Session</button>
+        </>
+      ) : (
+        <button onClick={startSession}>Start Session</button>
+      )}
+    </div>
+  );
+};
+
+export default VideoSession;

@@ -11,7 +11,8 @@ export default function VideoSession() {
   const [cameraEnabled, setCameraEnabled] = useState(true);
   const [archiveId, setArchiveId] = useState("");
   const [isRecording, setIsRecording] = useState(false);
-  const [videoUrl, setVideoUrl] = useState("");
+  // const [videoUrl, setVideoUrl] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
 
   // Load the OpenTok SDK
   useEffect(() => {
