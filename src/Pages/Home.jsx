@@ -1,14 +1,14 @@
 import React from 'react';
 import './Home.css';
-import guitar from '../images/guitar.jpeg';
-import Tidbit from '../images/Tidbit.png';
+// import guitar from '../images/guitar.jpeg';
+// import Tidbit from '../images/Tidbit.png';
 
 export default function Home() {
   return (
     <div className="home-container">
       <img src={Tidbit} alt="Tidbit Logo" className="tidbit-logo" />
       <div className="image-container">
-        <img src={guitar} alt="guitar" className="image" />
+        {/* <img src={guitar} alt="guitar" className="image" /> */}
       </div>
       <div>
       <h2 className="home-header-title"> Where Those Who Know</h2>
@@ -19,4 +19,5 @@ export default function Home() {
     </div>
   )
 }
+
 
