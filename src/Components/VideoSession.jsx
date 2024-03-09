@@ -1,60 +1,48 @@
-import React, { useEffect, useState } from "react";
-import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
+import React, { useState, useEffect } from 'react';
+import { OTSession, OTPublisher, OTStreams, OTSubscriber } from 'opentok-react';
 
-const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
-const API = import.meta.env.VITE_API_URL;
-
-export default function VideoSession() {
-  const [sessionId, setSessionId] = useState("");
-  const [token, setToken] = useState("");
+const VideoSession = () => {
+  const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
+  const API = import.meta.env.VITE_API_URL;
+  const [sessionId, setSessionId] = useState('');
+  const [token, setToken] = useState('');
   const [otSdkReady, setOtSdkReady] = useState(false);
-  const [cameraEnabled, setCameraEnabled] = useState(true);
-  const [archiveId, setArchiveId] = useState("");
+  const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
-  const [videoUrl, setVideoUrl] = useState("");
+  const [archiveId, setArchiveId] = useState("");
 
-  // Load the OpenTok SDK
+
+  // Dynamically load the OpenTok SDK
   useEffect(() => {
-    const script = document.createElement("script");
-    script.src = "https://static.opentok.com/v2/js/opentok.min.js";
+    const script = document.createElement('script');
+    script.src = 'https://static.opentok.com/v2/js/opentok.min.js';
     script.async = true;
     script.onload = () => setOtSdkReady(true);
     document.head.appendChild(script);
     return () => document.head.removeChild(script);
   }, []);
 
-  // Fetch session ID and token
-  useEffect(() => {
-    async function fetchSessionIdAndToken() {
-      try {
-        const sessionResponse = await fetch(`${API}/videos/session`, {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            mediaMode: "routed",
-          }),
-        });
-        if (!sessionResponse.ok) throw new Error("Failed to fetch session");
-        const sessionData = await sessionResponse.json();
+  const fetchSessionAndToken = async () => {
+    try {
+      const sessionRes = await fetch(`${API}/videos/session`, { method: 'POST' });
+      if (!sessionRes.ok) throw new Error('Failed to fetch session');
+      const sessionData = await sessionRes.json();
 
-        const tokenResponse = await fetch(
-          `${API}/videos/token/${sessionData.sessionId}`,
-          {
-            method: "GET",
-            headers: { "Content-Type": "application/json" },
-          }
-        );
-        if (!tokenResponse.ok) throw new Error("Failed to fetch token");
-        const tokenData = await tokenResponse.json();
+      const tokenRes = await fetch(`${API}/videos/token/${sessionData.sessionId}`);
+      if (!tokenRes.ok) throw new Error('Failed to fetch token');
+      const tokenData = await tokenRes.json();
 
-        setSessionId(sessionData.sessionId);
-        setToken(tokenData.token);
-      } catch (error) {
-        console.error("Error fetching session ID and token:", error);
-      }
+      setSessionId(sessionData.sessionId);
+      setToken(tokenData.token);
+    } catch (error) {
+      console.error('Error fetching session and token:', error);
     }
-    fetchSessionIdAndToken();
-  }, []);
+  };
+
+  const startSession = async () => {
+    await fetchSessionAndToken();
+    setIsConnected(true);
+  };
 
   const startRecording = async () => {
     try {
@@ -67,6 +55,7 @@ export default function VideoSession() {
       const data = await response.json();
       console.log("Recording started:", data);
       setIsRecording(true);
+      console.log( data.archiveId)
       setArchiveId(data.archiveId);
     } catch (error) {
       console.log("Error starting recording:", error);
@@ -75,44 +64,57 @@ export default function VideoSession() {
 
   const stopRecording = async () => {
     try {
+      if (!archiveId) throw new Error("archiveId is not defined"); // Ensure archiveId is available
       const response = await fetch(`${API}/videos/stop-recording`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ archiveId }),
+        body: JSON.stringify({ archiveId }), // Use the archiveId from the stategit dd
       });
-      if (response.ok) throw new Error("Failed to stop recording");
+      if (!response.ok) throw new Error("Failed to stop recording");
       const data = await response.json();
       console.log("Recording stopped:", data);
       setIsRecording(false);
-      setArchiveId("");
+      setArchiveId(""); // Optionally reset the archiveId
     } catch (error) {
-      console.error("Error stooping recording:", error);
+      console.error("Error stopping recording:", error);
     }
+};
+  
+
+  const endSession = () => {
+    // Logic to clean up and reset state
+    setIsConnected(false);
+    // setIsRecording(false);
+    setSessionId('');
+    setToken('');
   };
 
-  if (!sessionId || !token || !otSdkReady) {
-    return <div>Loading...</div>;
+  if (!otSdkReady) {
+    return <div>Loading OpenTok SDK...</div>;
   }
 
   return (
     <div className="video-container">
-      <OTSession
-        apiKey={apiKey}
-        sessionId={sessionId}
-        token={token}
-        onError={(error) => console.error(error)}
-      >
-        <OTPublisher publishVideo={cameraEnabled} />
-        <OTStreams>
-          <OTSubscriber />
-        </OTStreams>
-      </OTSession>
-      {isRecording && <button onClick={startRecording}>Start Recording</button>}
-      {isRecording && (
-        <button onClick={() => setCameraEnabled(true)}>Start Camera</button>
+      {isConnected ? (
+        <>
+          <OTSession apiKey={apiKey} sessionId={sessionId} token={token} onError={(error) => console.error(error)}>
+            <OTPublisher />
+            <OTStreams>
+              <OTSubscriber />
+            </OTStreams>
+          </OTSession>
+          {!isRecording ? (
+            <button onClick={startRecording}>Start Recording</button>
+          ) : (
+            <button onClick={stopRecording}>Stop Recording</button>
+          )}
+          <button onClick={endSession}>End Session</button>
+        </>
+      ) : (
+        <button onClick={startSession}>Start Session</button>
       )}
-      <button onClick={() => setCameraEnabled(false)}>Stop Camera</button>
-      {/* {error && <div className="error">{error}</div>} */}
     </div>
   );
-}
+};
+
+export default VideoSession;
