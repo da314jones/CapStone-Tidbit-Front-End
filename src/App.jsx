@@ -1,5 +1,7 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { ThemeProvider } from './Components/ThemeContext';
+import ThemeToggleButton from './Components/ThemeToggleButton';
 import './App.css'
 
 import Home from "./Pages/Home";
@@ -14,7 +16,9 @@ function App() {
 
   return (
     <>
+    <ThemeProvider> 
       <div className="App">
+        <ThemeToggleButton />
         <Router>
           <Routes>
           <Route path="/video-session" element={<VideoSession />} />
@@ -27,6 +31,7 @@ function App() {
           </Routes>
         </Router>
       </div>
+      </ThemeProvider>
     </>
   );
 }
