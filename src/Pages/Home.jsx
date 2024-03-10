@@ -1,14 +1,21 @@
 import React from 'react';
 import './Home.css';
+import { useNavigate } from 'react-router-dom';
 // import guitar from '../images/guitar.jpeg';
 // import Tidbit from '../images/Tidbit.png';
 
 export default function Home() {
+  const navigate = useNavigate();
+
+const goToDashboard = () => {
+  navigate('/dashboard')
+}
+
   return (
     <div className="home-container">
-      <img src={Tidbit} alt="Tidbit Logo" className="tidbit-logo" />
+{/* <img  src={"/tidbitsBrandLogo.png"} alt="Tidbit Logo" className="tidbit-logo" /> */}
       <div className="image-container">
-        {/* <img src={guitar} alt="guitar" className="image" /> */}
+        <img onClick={goToDashboard} src={"/heroImage.png"} alt="Man Playing Piano" className="image" />
       </div>
       <div>
       <h2 className="home-header-title"> Where Those Who Know</h2>
