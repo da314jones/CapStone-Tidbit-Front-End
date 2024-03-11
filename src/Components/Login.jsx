@@ -12,17 +12,34 @@ import {
 
      useEffect(() => {
       if (user) {
-       navigate("/loggedin");
+       navigate("/loggedIn");
       }
     }, [user, navigate]);
+
+    const handleLogin = async () => {
+      try {
+        await signInWithGoogle();
+      } catch (error) {
+        console.error('SignIn Failed');
+      }
+    };
+
+    const handleSignOut = async () => {
+      try {
+        await signOut();
+        navigate('/');
+      } catch (error) {
+        console.error('SignOut failed:', error);
+      }
+    };
 
       return (
       <div>
         <section>
           <div>
             <div> login works</div>
-            <button onClick={signInWithGoogle}>Sign in With google</button>
-            <button onClick={signOut}> sign out</button>
+            <button onClick={handleLogin}>Sign in With google</button>
+            <button onClick={handleSignOut}> sign out</button>
         </div>
         </section>
       </div>

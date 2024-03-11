@@ -13,14 +13,14 @@ const openModal = () => {
   setModalOpen(true);
 };
 
-const CloseModal = () => {
+const closeModal = () => {
   setModalOpen(false);
 };
 
   return (
     <div className="home-container">
       <div className="image-container">
-        <img onClick={goToDashboard} src={"/heroImage.png"} alt="Man Playing Piano" className="image" />
+        <img onClick={goToDashboard} src={"/home-image.jpg"} alt="Man Playing Piano" className="image" />
       </div>
       <div>
       <h2 className="home-header-title">Where Those Who Know Go to<span> Grow</span></h2>
