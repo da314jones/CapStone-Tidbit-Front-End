@@ -1,5 +1,5 @@
-import { useState } from 'react';
-import { useNavigate, useParams }  from "react-router-dom";
+import { useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 
 const API = import.meta.env.VITE_BASE_URL;
 
@@ -11,35 +11,51 @@ export default function VideoNewForm() {
     summary: "",
     video_url: "",
     duration: 0,
-    created_at: ""
+    created_at: "",
   });
 
-const addVideo = () => {
-    fetch(`${API}/videos/${id}`, {
+  const addVideo = () => {
+    console.log("Submitting video metadata:", video);
+    fetch(`${API}/videos/video-metadata`, {
       method: "POST",
-          body: JSON.stringify(video),
-          headers: {
-              "Content-Type": "application/json",
-          },
+      body: JSON.stringify(video),
+      headers: {
+        "Content-Type": "application/json",
+      },
     })
-    .then(() => {
-      navigate(`/videos`);
-    })
-    .catch((error) => console.error("catch", error));
+      .then(() => {
+        navigate(`/videos`);
+      })
+      .catch((error) => console.error("catch", error));
   };
 
-const handleTextChange = (event) => {
+  const handleTextChange = (event) => {
     setVideo({ ...video, [event.target.id]: event.target.value });
-};
+  };
 
-const handleSubmit = (event) => {
-      event.preventDefault();
+  const isValidMetadata = (video) => {
+    return (
+      video.title.trim() !== "" &&
+      video.summary.trim() !== "" &&
+      video.video_url.trim() !== ""
+    );
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    if (isValidMetadata(video)) {
       addVideo();
+    } else {
+      console.error("Invalid video metadata:", video);
+    }
   };
 
   return (
     <div className="container mx-auto mt-8">
-      <form onSubmit={handleSubmit} className="max-w-md mx-auto bg-pink-300 text-black p-2 rounded shadow-md">
+      <form
+        onSubmit={handleSubmit}
+        className="max-w-md mx-auto bg-pink-300 text-black p-2 rounded shadow-md"
+      >
         <label htmlFor="title">Title:</label>
         <input
           id="title"
@@ -49,7 +65,7 @@ const handleSubmit = (event) => {
           placeholder="Enter Title..."
           required
           className="form-input mb-4"
-          style={{ width: '100%', marginBottom: '1rem' }}
+          style={{ width: "100%", marginBottom: "1rem" }}
         />
 
         <label htmlFor="summary">Summary:</label>
@@ -61,7 +77,7 @@ const handleSubmit = (event) => {
           placeholder="Describe the video..."
           required
           className="form-input mb-4"
-          style={{ width: '100%', marginBottom: '1rem' }}
+          style={{ width: "100%", marginBottom: "1rem" }}
         />
 
         <label htmlFor="video_url">Video URL:</label>
@@ -73,7 +89,7 @@ const handleSubmit = (event) => {
           placeholder="Enter video URL..."
           required
           className="form-input mb-4"
-          style={{ width: '100%', marginBottom: '1rem' }}
+          style={{ width: "100%", marginBottom: "1rem" }}
         />
 
         <label htmlFor="duration">Duration:</label>
@@ -84,7 +100,7 @@ const handleSubmit = (event) => {
           onChange={handleTextChange}
           required
           className="form-input mb-4"
-          style={{ width: '100%', marginBottom: '1rem' }}
+          style={{ width: "100%", marginBottom: "1rem" }}
         />
 
         <label htmlFor="created_at">Created At:</label>
@@ -96,11 +112,14 @@ const handleSubmit = (event) => {
           placeholder="Enter created date..."
           required
           className="form-input mb-4"
-          style={{ width: '100%', marginBottom: '1rem' }}
+          style={{ width: "100%", marginBottom: "1rem" }}
         />
 
         <div>
-          <button type="submit" className="bg-pink-300 text-white p-2 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-black active:bg-black-800">
+          <button
+            type="submit"
+            className="bg-pink-300 text-white p-2 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-black active:bg-black-800"
+          >
             Add Video
           </button>
         </div>
@@ -108,4 +127,3 @@ const handleSubmit = (event) => {
     </div>
   );
 }
-

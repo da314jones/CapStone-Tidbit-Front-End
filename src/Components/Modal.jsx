@@ -2,7 +2,7 @@ import React from "react";
 import "./modal.css";
 
 export default class Modal extends React.Component {
-  onClose = e => {
+  onClose = (e) => {
     this.props.onClose && this.props.onClose(e);
   };
   render() {

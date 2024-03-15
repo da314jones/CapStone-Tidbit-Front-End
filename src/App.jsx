@@ -1,29 +1,32 @@
 import React from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import './App.css'
-import { AuthProvider } from './Providers/AuthProvider'
+import "./App.css";
+import { AuthProvider } from "./Providers/AuthProvider";
 import Home from "./Pages/Home";
+import Index from "./Pages/Index";
 import Edit from "./Pages/Edit";
 import New from "./Pages/New";
 import Show from "./Pages/Show";
 import FourOFour from "./Pages/FourOFour";
 import VideoSession from "./Components/VideoSession";
 import Dashboard from "./Components/Dashboard";
+import Profile from "./Components/Profile";
 import NavBar from "./Components/NavBar";
-Dashboard
-function App() {
-  
+import SideBar from "./Components/Sidebar";
+Dashboard;
 
+function App() {
   return (
     <AuthProvider>
       <div className="App">
         <Router>
           <NavBar />
+          <SideBar />
           <Routes>
-          <Route path="/video" element={<VideoSession />} />
-          <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/" element={<Home />} />
-            {/* <Route path="/videos" element={<Index />} /> */}
+            <Route path="/session" element={<VideoSession />} />
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/dashboard" element={<Index />} />
             <Route path="/videos/:id" element={<Show />} />
             <Route path="/videos/edit" element={<Edit />} />
             <Route path="/videos/new" element={<New />} />

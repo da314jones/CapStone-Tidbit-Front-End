@@ -1,12 +1,12 @@
-import React from 'react';
-import VideoNewForm from '../Components/VideoNewForm';
+import React from "react";
+import VideoNewForm from "../Components/VideoNewForm";
 // POST
 
 export default function New() {
+  
   return (
     <div>
-     <VideoNewForm />
+      <VideoNewForm />
     </div>
-  )
+  );
 }
-

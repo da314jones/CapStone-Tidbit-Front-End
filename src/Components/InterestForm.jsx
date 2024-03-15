@@ -1,10 +1,7 @@
 // import React from 'react';
 
-
 // export default function InterestForm() {
-  
 
- 
 //   return (
 //     <div>
 //  <h2>Interest Form</h2>

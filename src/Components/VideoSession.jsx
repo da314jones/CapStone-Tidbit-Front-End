@@ -1,21 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { OTSession, OTPublisher, OTStreams, OTSubscriber } from 'opentok-react';
+import React, { useState, useEffect } from "react";
+import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 
 const VideoSession = () => {
   const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
   const API = import.meta.env.VITE_API_URL;
-  const [sessionId, setSessionId] = useState('');
-  const [token, setToken] = useState('');
+  const [sessionId, setSessionId] = useState("");
+  const [token, setToken] = useState("");
   const [otSdkReady, setOtSdkReady] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [archiveId, setArchiveId] = useState("");
 
-
   // Dynamically load the OpenTok SDK
   useEffect(() => {
-    const script = document.createElement('script');
-    script.src = 'https://static.opentok.com/v2/js/opentok.min.js';
+    const script = document.createElement("script");
+    script.src = "https://static.opentok.com/v2/js/opentok.min.js";
     script.async = true;
     script.onload = () => setOtSdkReady(true);
     document.head.appendChild(script);
@@ -24,18 +23,24 @@ const VideoSession = () => {
 
   const fetchSessionAndToken = async () => {
     try {
-      const sessionRes = await fetch(`${API}/videos/session`, { method: 'POST' });
-      if (!sessionRes.ok) throw new Error('Failed to fetch session');
+      const sessionRes = await fetch(`${API}/videos/session`, {
+        method: "POST",
+      });
+      if (!sessionRes.ok) throw new Error("Failed to fetch session");
       const sessionData = await sessionRes.json();
 
-      const tokenRes = await fetch(`${API}/videos/token/${sessionData.sessionId}`);
-      if (!tokenRes.ok) throw new Error('Failed to fetch token');
+      const tokenRes = await fetch(
+        `${API}/videos/token/${sessionData.sessionId}`
+      );
+      if (!tokenRes.ok) throw new Error("Failed to fetch token");
       const tokenData = await tokenRes.json();
 
       setSessionId(sessionData.sessionId);
+      console.log(sessionData.sessionId);
       setToken(tokenData.token);
+      console.log(sessionData, tokenData);
     } catch (error) {
-      console.error('Error fetching session and token:', error);
+      console.error("Error fetching session and token:", error);
     }
   };
 
@@ -55,7 +60,7 @@ const VideoSession = () => {
       const data = await response.json();
       console.log("Recording started:", data);
       setIsRecording(true);
-      console.log( data.archiveId)
+      console.log(data.archiveId);
       setArchiveId(data.archiveId);
     } catch (error) {
       console.log("Error starting recording:", error);
@@ -68,25 +73,25 @@ const VideoSession = () => {
       const response = await fetch(`${API}/videos/stop-recording`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
-        body: JSON.stringify({ archiveId }), // Use the archiveId from the stategit dd
+        body: JSON.stringify({ archiveId }),
       });
       if (!response.ok) throw new Error("Failed to stop recording");
       const data = await response.json();
       console.log("Recording stopped:", data);
+      console.log(data.archiveId);
       setIsRecording(false);
       setArchiveId(""); // Optionally reset the archiveId
     } catch (error) {
       console.error("Error stopping recording:", error);
     }
-};
-  
+  };
 
   const endSession = () => {
     // Logic to clean up and reset state
     setIsConnected(false);
     // setIsRecording(false);
-    setSessionId('');
-    setToken('');
+    setSessionId("");
+    setToken("");
   };
 
   if (!otSdkReady) {
@@ -97,7 +102,12 @@ const VideoSession = () => {
     <div className="video-container">
       {isConnected ? (
         <>
-          <OTSession apiKey={apiKey} sessionId={sessionId} token={token} onError={(error) => console.error(error)}>
+          <OTSession
+            apiKey={apiKey}
+            sessionId={sessionId}
+            token={token}
+            onError={(error) => console.error(error)}
+          >
             <OTPublisher />
             <OTStreams>
               <OTSubscriber />

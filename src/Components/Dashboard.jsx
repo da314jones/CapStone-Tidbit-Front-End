@@ -1,20 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import VideoSession from "./VideoSession";
-import SideBar from "./Sidebar";
-import './Dashboard.css';
-// import { AuthContext } from '../Providers/AuthProvider'
+import "./Dashboard.css";
+const API = import.meta.env.VITE_API_URL;
 
 export default function Dashboard() {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  const [videos, setVideos] = useState([]);
+
+  useEffect(() => {
+    const fetchVideos = async () => {
+      try {
+        const response = await fetch(`${API}/s3/list`);
+        const data = await response.json();
+        console.log("Fetched videos:", data);
+        setVideos(data.videoWithSignedUrls || []);
+      } catch (error) {
+        console.error("Error fetching videos:", error);
+      }
+    };
+    fetchVideos();
+  }, []);
 
   return (
-    <div>
-      <div className="sidebar-container">
-        <SideBar />
-      </div>
-      <div className="video-session-container">
-        <VideoSession />
-      </div>
+    <div className="main-container">
+      {videos.map((video, index) => (
+        <div key={index} className="video-card">
+          <video width="1280" height="720" controls>
+            <source src={video.signedUrl} type="video/mp4" />
+            Your Browser does not support the video tag.
+          </video>
+          <div className="video-info"></div>
+          <div className="video-title"></div>
+          <div className="video-creator"></div>
+        </div>
+      ))}
     </div>
   );
 }
