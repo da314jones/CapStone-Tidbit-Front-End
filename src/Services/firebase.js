@@ -23,22 +23,21 @@ export const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-
-    // Extract UID from user object
-    const uid = user.uid;
+   
 
     const userProfile = {
-      uid: user.uid,
-      displayName: user.displayName,
+      firstName: user.displayName.split(" ")[0],
+      lastName: user.displayName.split(" ").splice(1).join(" ") || "",
       email: user.email,
-      photoURL: user.photoURL,
+      photo_url: user.photoURL,
+      uid: user.uid,
     };
 
-    saveUserProfile(userProfile);
+    // saveUserProfile(userProfile);
     sendUserDataToBackend(userProfile); // Pass UID to the backend
     console.log(user);
     console.log(userProfile);
-    console.log(uid); // Log UID for debugging purposes
+    // console.log(uid); // Log UID for debugging purposes
   } catch (err) {
     console.log(err);
   }
@@ -66,9 +65,9 @@ const sendUserDataToBackend = async (userProfile) => {
   }
 };
 
-const saveUserProfile = async (userProfile) => {
-  console.log("Saving user profile:", userProfile);
-};
+// const saveUserProfile = async (userProfile) => {
+//   console.log("Saving user profile:", userProfile);
+// };
 
 export const signOut = async () => {
   try {
