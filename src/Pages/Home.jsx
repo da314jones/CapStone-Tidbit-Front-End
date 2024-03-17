@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Home.css";
 import { useNavigate } from "react-router-dom";
+import Footer from "../Components/Footer";
 
 export default function Home() {
   const [modalOpen, setModalOpen] = useState(false);
