@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 
-const VideoSession = () => {
+export default function VideoSession() {
   const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
   const API = import.meta.env.VITE_API_URL;
   const [sessionId, setSessionId] = useState("");
@@ -126,5 +126,3 @@ const VideoSession = () => {
     </div>
   );
 };
-
-export default VideoSession;

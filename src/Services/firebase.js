@@ -65,9 +65,6 @@ const sendUserDataToBackend = async (userProfile) => {
   }
 };
 
-// const saveUserProfile = async (userProfile) => {
-//   console.log("Saving user profile:", userProfile);
-// };
 
 export const signOut = async () => {
   try {
