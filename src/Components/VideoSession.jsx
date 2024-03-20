@@ -1,15 +1,16 @@
 import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
+import VideoNewForm from "./VideoNewForm";
+
 
 export default function VideoSession() {
-  const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
-  const API = import.meta.env.VITE_API_URL;
   const [sessionId, setSessionId] = useState("");
   const [token, setToken] = useState("");
   const [otSdkReady, setOtSdkReady] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [archiveId, setArchiveId] = useState("");
+  const [showForm, setShowForm] = useState(false);
 
   // Dynamically load the OpenTok SDK
   useEffect(() => {
@@ -69,7 +70,7 @@ export default function VideoSession() {
 
   const stopRecording = async () => {
     try {
-      if (!archiveId) throw new Error("archiveId is not defined"); // Ensure archiveId is available
+      if (!archiveId) throw new Error("archiveId is not defined");
       const response = await fetch(`${API}/videos/stop-recording`, {
         method: "POST",
         headers: { "Content-type": "application/json" },
@@ -80,23 +81,18 @@ export default function VideoSession() {
       console.log("Recording stopped:", data);
       console.log(data.archiveId);
       setIsRecording(false);
-      setArchiveId(""); // Optionally reset the archiveId
+      setShowForm(true);
     } catch (error) {
       console.error("Error stopping recording:", error);
     }
   };
 
   const endSession = () => {
-    // Logic to clean up and reset state
     setIsConnected(false);
-    // setIsRecording(false);
     setSessionId("");
     setToken("");
   };
 
-  if (!otSdkReady) {
-    return <div>Loading OpenTok SDK...</div>;
-  }
 
   return (
     <div className="video-container">
@@ -123,6 +119,7 @@ export default function VideoSession() {
       ) : (
         <button onClick={startSession}>Start Session</button>
       )}
+      {showForm && <VideoNewForm archiveId={archiveId} onClose={() => setShowForm(false)} onSubmitSuccess={() => console.log('Video submission successful')} />}
     </div>
   );
 };

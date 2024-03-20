@@ -23,7 +23,7 @@ export const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-   
+    sessionStorage.setItem('userUID', user.uid);
 
     const userProfile = {
       firstName: user.displayName.split(" ")[0],
@@ -33,11 +33,8 @@ export const signInWithGoogle = async () => {
       uid: user.uid,
     };
 
-    // saveUserProfile(userProfile);
-    sendUserDataToBackend(userProfile); // Pass UID to the backend
-    console.log(user);
+    sendUserDataToBackend(userProfile); 
     console.log(userProfile);
-    // console.log(uid); // Log UID for debugging purposes
   } catch (err) {
     console.log(err);
   }
@@ -64,7 +61,6 @@ const sendUserDataToBackend = async (userProfile) => {
     console.error("Error sending user data to backend:", error);
   }
 };
-
 
 export const signOut = async () => {
   try {
