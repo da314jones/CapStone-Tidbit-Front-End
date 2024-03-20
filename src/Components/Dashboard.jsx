@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import VideoSession from "./VideoSession";
+import Video from "./Video";
 import "./Dashboard.css";
 const API = import.meta.env.VITE_API_URL;
 
@@ -23,17 +23,15 @@ export default function Dashboard() {
 
   return (
     <div className="main-container">
+    <div className="buttons-container">
+      <button>Date</button>
+      <button>View Count</button>
+    </div>
+    <div className="videoList-container">
       {videos.map((video, index) => (
-        <div key={index} className="video-card">
-          <video width="1280" height="720" controls>
-            <source src={video.signedUrl} type="video/mp4" />
-            Your Browser does not support the video tag.
-          </video>
-          <div className="video-info"></div>
-          <div className="video-title"></div>
-          <div className="video-creator"></div>
+        <Video key={index} video={video} />
+        ))}
         </div>
-      ))}
     </div>
   );
 }

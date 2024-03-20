@@ -44,7 +44,7 @@ export default function NavBar() {
     <div className="navbar-container">
       <img
         className="brand-logo"
-        src={"/tidbitsBrandLogo.png"}
+        src={"/tidbitLogo.png"}
         alt="Tidbits Brand Logo"
       />
       <div className="profile-menu">
