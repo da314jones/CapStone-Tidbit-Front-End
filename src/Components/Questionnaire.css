@@ -1,0 +1,62 @@
+.questionnaire-container {
+  width: auto; 
+  /* width: 90vw;  */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow-y: auto; /* Scrollbar will appear if the content is too long */
+  background: #fff; /* White background */
+  border-radius: 10px;
+}
+
+/* ... rest of the CSS ... */
+
+
+.interest-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 2fr); /* Adjust the minmax value as needed */
+  grid-auto-rows: minmax(px, auto); 
+  grid-gap: 15px;
+  align-items: center;
+  justify-content: center;
+  max-height: 40vh; /* Adjust the height of the grid */
+  width: 4 00px;
+  overflow-y: auto; /* Allows scrolling within the grid if the content is too long */
+}
+
+.interest-label {
+  display: flex;
+  align-items: center;
+  background-color: #f2f2f2;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+.interest-checkbox {
+  margin-right: 10px;
+}
+
+.continue-button {
+  padding: 10px 20px;
+  background-color: #4e73df;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1em;
+  align-self: center;
+  margin-top: 20px;
+}
+
+@media (max-width: 768px) {
+  .interest-grid {
+    grid-template-columns: repeat(2, 1fr); /* Two columns on smaller screens */
+  }
+}
+
+@media (max-width: 480px) {
+  .interest-grid {
+    grid-template-columns: 1fr; /* One column on the smallest screens */
+  }
+}
