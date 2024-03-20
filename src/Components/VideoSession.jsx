@@ -2,9 +2,6 @@ import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 import VideoNewForm from "./VideoNewForm";
 
-const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
-const API = import.meta.env.VITE_API_URL;
-
 
 export default function VideoSession() {
   const [sessionId, setSessionId] = useState("");
