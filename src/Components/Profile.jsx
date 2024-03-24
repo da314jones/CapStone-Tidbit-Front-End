@@ -1,23 +1,23 @@
 // Profile.jsx -
-import React from "react";
+import React, { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
+import { signInWithGoogle, signOut } from "../Services/firebase";
+
+
 import "./Profile.css";
 
 export default function Profile() {
+  const user = useContext(AuthContext);
+console.log(user)
+
   return (
     <div className="profile-container">
-      <div className="sidebar">
-        <div className="sidebar-icon">Broadcast</div>
-        <div className="sidebar-icon">Index</div>
-        <div className="sidebar-icon">Settings</div>
-      </div>
       <div className="main-content">
         <div className="top-section">
-          <div className="logo">
-            <img src="logo-image.jpg" alt="Your Logo" />
-          </div>
+
           <div className="profile-info">
             <div className="profile-picture">
-              <img src="profile-picture.jpg" alt="Profile" />
+              <img src={user.photoURL} alt="Profile" />
             </div>
             <div className="profile-name">Your Name</div>
           </div>

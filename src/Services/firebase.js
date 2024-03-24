@@ -23,6 +23,7 @@ export const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
+    console.log(user)
     sessionStorage.setItem('userUID', user.uid);
 
     const userProfile = {

@@ -3,15 +3,6 @@
   align-items: flex-start;
 }
 
-.sidebar {
-  flex: 0 0 20%;
-  background-color: #f0f0f0;
-  padding: 20px;
-}
-
-.sidebar-icon {
-  margin-bottom: 20px;
-}
 
 .main-content {
   flex: 1;
@@ -23,16 +14,7 @@
   align-items: center;
 }
 
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
 
-.logo img {
-  width: 100px;
-  height: auto;
-}
 
 .profile-info {
   display: flex;

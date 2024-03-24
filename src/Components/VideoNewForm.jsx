@@ -1,34 +1,54 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
+import StyledModal from "styled-react-modal";
 import "./VideoNewform.css";
 
 const API = import.meta.env.VITE_API_URL;
 
-export default function VideoNewForm({ onClose, archiveId, onSubmitSuccess }) {
+const StyledFormModal = StyledModal.styled`
+display: flex;
+flex-direction: colimn;
+justify-content: center;
+align-items: center;
+background-color: white;
+padding: 20px;
+border-radius: 8px;
+max-width: 500px;
+width: 90%
+box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+`;
+
+export default function VideoNewForm({ onClose, isOpen, archiveId, archiveUrl, onSubmitSuccess }) {
   const navigate = useNavigate();
   const [video, setVideo] = useState({
+    category: "",
     title: "",
     summary: "",
-    video_url: "",
-    duration: 0,
-    created_at: "",
+    video_url: archiveUrl,
+    isPrivate: "",
   });
 
-  console.log(archiveId);
-
   const user_id = sessionStorage.getItem("userUID");
+  const metaDataObject = {
+    uid: user_id,
+    archiveId: archiveId,
+    ...video,
+  };
+  console.log(metaDataObject);
+
+  useEffect(() => {
+    setVideo(prevVideo => ({ ...prevVideo, video_url: archiveUrl }));
+  }, [archiveUrl])
+
   console.log(user_id);
+
+ 
+
 
   const addVideo = async () => {
     if (!user_id) {
       console.error("Firebase UID is not available.");
-    }
-    console.log("Submitting metaDataObject:", video);
-    const metaDataObject = {
-      user_id,
-      ...video,
-      archive_id: archiveId,
-    };
+    }   
     console.log("metaDataObject with archiveId:", metaDataObject);
     try {
       const response = await fetch(`${API}/videos/video-metadata`, {
@@ -43,6 +63,8 @@ export default function VideoNewForm({ onClose, archiveId, onSubmitSuccess }) {
       }
       const data = await response.json();
       console.log("MetaDataObject added:", data);
+      // await uploadToS3(metaDataObject);
+
       onClose();
       onSubmitSuccess();
     } catch (error) {
@@ -74,76 +96,61 @@ export default function VideoNewForm({ onClose, archiveId, onSubmitSuccess }) {
   };
 
   return (
-    <div className="modal-overlay">
-      <div className="modal-content">
-        <>
-          <div className="container mx-auto mt-8">
-            <form
-              onSubmit={handleSubmit}
-              className="max-w-md mx-auto bg-pink-300 text-black p-2 rounded shadow-md"
-            >
-              <label htmlFor="title">Title:</label>
-              <input
-                id="title"
-                value={video.title}
-                type="text"
-                onChange={handleTextChange}
-                placeholder="Enter Title..."
-                required
-                className="form-input mb-4"
-                style={{ width: "100%", marginBottom: "1rem" }}
-              />
+    <StyledFormModal
+      isOpen={isOpen}
+      onBackgroundClick={onClose}
+      onEscapeKeydown={onClose}
+    >
+      <div className="modal-overlay">
+        <div className="modal-content">
+          <>
+            <div className="container mx-auto mt-8">
+              <form
+                onSubmit={handleSubmit}
+                className="max-w-md mx-auto bg-pink-300 text-black p-2 rounded shadow-md"
+              >
+                <label htmlFor="title">Title:</label>
+                <input
+                  id="title"
+                  value={video.title}
+                  type="text"
+                  onChange={handleTextChange}
+                  placeholder="Enter Title..."
+                  required
+                  className="form-input mb-4"
+                  style={{ width: "100%", marginBottom: "1rem" }}
+                />
 
-              <label htmlFor="summary">Summary:</label>
-              <input
-                id="summary"
-                value={video.summary}
-                type="text"
-                onChange={handleTextChange}
-                placeholder="Describe the video..."
-                required
-                className="form-input mb-4"
-                style={{ width: "100%", marginBottom: "1rem" }}
-              />
+                <label htmlFor="summary">Summary:</label>
+                <input
+                  id="summary"
+                  value={video.summary}
+                  type="text"
+                  onChange={handleTextChange}
+                  placeholder="Describe the video..."
+                  required
+                  className="form-input mb-4"
+                  style={{ width: "100%", marginBottom: "1rem" }}
+                />
 
-              <label htmlFor="video_url">Video URL:</label>
-              <input
-                id="video_url"
-                value={video.video_url}
-                type="text"
-                onChange={handleTextChange}
-                placeholder="Enter video URL..."
-                required
-                className="form-input mb-4"
-                style={{ width: "100%", marginBottom: "1rem" }}
-              />
+                {/* <p>{video.video_url}</p> */}
 
-              <label htmlFor="duration">Duration:</label>
-              <input
-                id="duration"
-                value={video.duration}
-                type="number"
-                onChange={handleTextChange}
-                required
-                className="form-input mb-4"
-                style={{ width: "100%", marginBottom: "1rem" }}
-              />
-
-              <div>
-                <button
-                  type="submit"
-                  className="bg-pink-300 text-white p-2 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-black active:bg-black-800"
-                >
-                  Add Video
-                </button>
-              </div>
-            </form>
-            <button onClick={onClose} className="close-button">
-              Close Form
-            </button>
-          </div>
-        </>
+                <div>
+                  <button
+                    type="submit"
+                    className="bg-pink-300 text-white p-2 rounded-md hover:bg-purple-600 focus:outline-none focus:shadow-outline-black active:bg-black-800"
+                  >
+                    Add Video
+                  </button>
+                </div>
+              </form>
+              <button onClick={onClose} className="close-button">
+                Close Form
+              </button>
+            </div>
+          </>
+        </div>
       </div>
-    </div>
+    </StyledFormModal>
   );
 }
