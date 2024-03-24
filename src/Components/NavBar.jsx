@@ -1,5 +1,5 @@
 import React, { useState, useContext, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { signInWithGoogle, signOut } from "../Services/firebase";
 import "./NavBar.css";
@@ -28,25 +28,19 @@ export default function NavBar() {
     }
   };
 
-  // useEffect(() => {
-  //   if (user) {
-  //     navigate('dashboard');
-  //   } else {
-  //     navigate('/');
-  //   }
-  // }, [user, navigate])
-
   const handleToggleDropdown = () => {
     setDropdown(!dropDown);
   };
 
   return (
     <div className="navbar-container">
-      <img
+     <Link to='/'>
+     <img
         className="brand-logo"
         src={"/tidbitLogo.png"}
         alt="Tidbits Brand Logo"
       />
+     </Link> 
       <div className="profile-menu">
         <img
           src={user ? user.photoURL : "/profileIcon.jpg"}

@@ -3,7 +3,7 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  justify-content: center; /* Centers items vertically */
+  justify-content: center;
   position: fixed;
   left: 0;
   top: 0;
@@ -18,12 +18,12 @@
 .sidebar nav ul {
   list-style-type: none;
   padding: 0;
-  margin: 0; /* Remove default margin */
+  margin: 0;
 }
 
 .sidebar nav ul li a {
   display: block;
-  padding: 15px; /* Adjust padding as needed */
+  padding: 15px; 
   color: #333;
   text-decoration: none;
   transition: background-color 0.3s; /* Smooth background transition */
@@ -31,17 +31,32 @@
 
 .sidebar nav ul li a.active,
 .sidebar nav ul li a:hover {
-  background-color: #ddd;
+  /* background-color: #ddd; */
 }
 
 .sidebar-icon {
-  width: 24px; /* Set your desired icon size */
-  height: 24px;
+  width: 50px; /* Set your desired icon size */
+  height: auto;
   margin-right: 10px; /* Add some space between the icon and the text */
   vertical-align: middle; /* Align the icon with the text */
+  border-radius: 10px;
 }
 
 /* Add styles for the text to align it with the icon if necessary */
 .sidebar nav ul li a span {
   vertical-align: middle;
 }
+
+* Style for active link */
+.sidebar nav ul li a.active .sidebar-icon {  /* Increase the size of the icon for the active link */
+  transform: scale(2); /* 20% larger */
+}
+
+/* Style for active link text if needed */
+.sidebar nav ul li a.active,
+.sidebar nav ul li a:hover {
+  font-weight: bold; /* Make the text bold for active/hovered links */
+}
+/* .sidebar-icon {
+  transform: scale(1.5)
+} */

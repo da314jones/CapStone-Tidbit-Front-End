@@ -2,9 +2,8 @@ import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 import VideoNewForm from "./VideoNewForm";
 
-const API = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
-
+const API = import.meta.env.VITE_API_URL;
 
 export default function VideoSession() {
   const [sessionId, setSessionId] = useState("");
@@ -13,7 +12,8 @@ export default function VideoSession() {
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [archiveId, setArchiveId] = useState("");
-  const [showForm, setShowForm] = useState(false);
+  const [archiveUrl, setArchiveUrl] = useState("");
+  const [showVideoNewForm, setShowVideoNewForm] = useState(false);
 
   // Dynamically load the OpenTok SDK
   useEffect(() => {
@@ -83,19 +83,34 @@ export default function VideoSession() {
       const data = await response.json();
       console.log("Recording stopped:", data);
       console.log(data.archiveId);
+      console.log(data.archiveUrl);
       setIsRecording(false);
-      setShowForm(true);
+      setShowVideoNewForm(true);
+      setArchiveUrl(data.archiveUrl);
+      setArchiveId(data.archiveId);
     } catch (error) {
       console.error("Error stopping recording:", error);
     }
   };
 
+  const handleVideoFormSubmitSuccess = () => {
+    setShowVideoNewForm(false);
+  };
+
+  const handleCloseForm = () => {
+    setShowVideoNewForm(false);
+    endSession();
+  };
+  
   const endSession = () => {
     setIsConnected(false);
     setSessionId("");
     setToken("");
   };
 
+  if (!otSdkReady) {
+    return <div>Loading OpenTok SDK...</div>;
+  }
 
   return (
     <div className="video-container">
@@ -122,7 +137,15 @@ export default function VideoSession() {
       ) : (
         <button onClick={startSession}>Start Session</button>
       )}
-      {showForm && <VideoNewForm archiveId={archiveId} onClose={() => setShowForm(false)} onSubmitSuccess={() => console.log('Video submission successful')} />}
+      {showVideoNewForm && (
+        <VideoNewForm
+          isOpen={showVideoNewForm}
+          onClose={handleCloseForm}
+          archiveId={archiveId}
+          archiveUrl={archiveUrl}
+          onSubmitSuccess={handleVideoFormSubmitSuccess}
+        />
+      )}
     </div>
   );
-};
+}
