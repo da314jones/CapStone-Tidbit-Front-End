@@ -45,6 +45,7 @@
   width: 100px;
   height: 100px;
   overflow: hidden;
+  margin-left: 270px;
 }
 
 .profile-picture img {

@@ -23,51 +23,12 @@ export const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
     const user = res.user;
-   
 
-    const userProfile = {
-      firstName: user.displayName.split(" ")[0],
-      lastName: user.displayName.split(" ").splice(1).join(" ") || "",
-      email: user.email,
-      photo_url: user.photoURL,
-      uid: user.uid,
-    };
-
-    // saveUserProfile(userProfile);
-    sendUserDataToBackend(userProfile); // Pass UID to the backend
     console.log(user);
-    console.log(userProfile);
-    // console.log(uid); // Log UID for debugging purposes
   } catch (err) {
     console.log(err);
   }
 };
-
-const sendUserDataToBackend = async (userProfile) => {
-  try {
-    console.log("Sending user data to backend:", userProfile);
-    const response = await fetch(`${API}/users/new-user`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(userProfile),
-    });
-
-    if (!response.ok) {
-      throw new Error("Failed to send user data to backend.");
-    }
-
-    const responseData = await response.json();
-    console.log("Backend response:", responseData);
-  } catch (error) {
-    console.error("Error sending user data to backend:", error);
-  }
-};
-
-// const saveUserProfile = async (userProfile) => {
-//   console.log("Saving user profile:", userProfile);
-// };
 
 export const signOut = async () => {
   try {

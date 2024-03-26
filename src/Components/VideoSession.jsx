@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const VideoSession = () => {
   const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
@@ -10,6 +11,7 @@ const VideoSession = () => {
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
   const [archiveId, setArchiveId] = useState("");
+  const user = useContext(AuthContext);
 
   // Dynamically load the OpenTok SDK
   useEffect(() => {
@@ -25,6 +27,7 @@ const VideoSession = () => {
     try {
       const sessionRes = await fetch(`${API}/videos/session`, {
         method: "POST",
+        body: user
       });
       if (!sessionRes.ok) throw new Error("Failed to fetch session");
       const sessionData = await sessionRes.json();
@@ -43,7 +46,7 @@ const VideoSession = () => {
       console.error("Error fetching session and token:", error);
     }
   };
-
+  console.log(fetchSessionAndToken)
   const startSession = async () => {
     await fetchSessionAndToken();
     setIsConnected(true);
