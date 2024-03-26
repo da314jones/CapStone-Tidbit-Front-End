@@ -21,7 +21,7 @@ export default function UploadModel() {
         // Add more fields as necessary
         
         try {
-            const response = await fetch(`/${API}/videos/upload`, { 
+            const response = await fetch(`/${API}/s3/upload`, { 
                 method: 'POST',
                 body: formData,
             });

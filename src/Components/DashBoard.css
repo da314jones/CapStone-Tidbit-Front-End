@@ -1,128 +1,74 @@
-.sidebar-container {
-  margin-top: 60px;
-  position: fixed;
-  left: 0;
-  top: 100px;
-  bottom: 0;
-  width: 250px;
-  background-color: #f0f0f0;
-  overflow-y: auto;
-}
-
-.video-session-container {
-  margin-left: 250px;
-  margin-top: 600px;
-  height: 100vh;
-}
-
-/* Dashboard.css */
-body,
-html {
-  height: 100%;
-  margin: 0;
-  font-family: "Arial", sans-serif;
-}
-
-/* Wrapper for the entire dashboard layout */
-.dashboard-wrapper {
-  display: flex;
-  height: 100%;
-}
-
-/* Sidebar styles */
-.sidebar-container {
-  background-color: #2c3e50;
-  width: 250px;
-  color: white;
-  display: flex;
-  flex-direction: column;
-  padding: 20px;
-}
-
-.sidebar-container button {
-  background-color: #3498db;
-  border: none;
-  padding: 10px;
-  margin-bottom: 10px;
-  color: white;
-  cursor: pointer;
-}
-
 /* Main container styles */
 .main-container {
   flex-grow: 1;
-  padding: 20px;
+  /* padding-left: 125px; */
   display: flex;
   flex-wrap: wrap;
-  gap: 20px; /* Space between videos */
-  justify-content: center; /* Center the videos horizontally */
-  align-content: flex-start; /* Align the videos to the top */
-  background: #ecf0f1;
+  gap: 20px; 
+   justify-content: flex-end; 
+  align-items: center; 
+  /* background: #ecf0f1; */
+  margin-top: 20vh; 
+}
+
+.buttons-container {
+  position: fixed;
+  top: 175px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+   justify-content: flex-start; 
+  /* background: #ecf0f1; */
+}
+
+.videoList-container {
+  flex-grow: 1;
+  /* padding-left: 125px; */
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px; 
+   justify-content: flex-end; 
+  align-items: center; 
+  /* background: #ecf0f1; */
+  margin-top: 30vh; 
 }
 
 /* Video card styles */
 .video-card {
-  width: calc(17% - 20px); /* Three videos per row with gap */
+  width: calc(15% - 5px); /* Adjust width for 5 videos per row - decrease for more videos across */
   margin-bottom: 20px;
   background: white;
   padding: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-@media (max-width: 1600px) {
-  .video-card {
-    width: calc(30% - 20px);
-  }
-}
 
-/* Add styles for the video info inside each card */
-.video-info {
-  padding: 10px; /* Add padding */
-  background-color: #ecf0f1; /* Slightly different background for the info */
-}
-
-.video-title,
-.video-creator {
-  margin: 5px 0; /* Add margin to top and bottom */
-}
-
-/* Ensure sidebar items do not stretch */
-.sidebar-container button,
-.sidebar-container a {
-  white-space: nowrap; /* Keep the text on a single line */
-  overflow: hidden; /* Hide overflow */
-  text-overflow: ellipsis; /* Add ellipsis for overflow */
-}
-
-.video-card video {
-  width: 100%; /* Make video responsive to the card's width */
-  height: auto; /* Maintain aspect ratio */
-  background: black; /* Background color for the video element */
-}
-
-/* Responsive adjustments for smaller screens */
+/* Responsive adjustments for fewer videos per row on smaller screens */
 @media (max-width: 1024px) {
   .video-card {
-    width: calc(50% - 20px); /* Two videos per row with gap */
+    width: calc(25% - 20px); /* 4 videos per row */
   }
 }
 
 @media (max-width: 768px) {
-  .sidebar-container {
-    width: 200px; /* Smaller sidebar on smaller screens */
-  }
-
   .video-card {
-    width: 100%; /* One video per row with gap */
+    width: calc(50% - 20px); /* 2 videos per row */
   }
 }
 
-/* Video title and creator styles */
-.video-title,
-.video-creator {
-  color: #2c3e50;
-  margin-top: 5px;
+@media (max-width: 480px) {
+  .video-card {
+    width: calc(100% - 20px); /* 1 video per row */
+  }
 }
 
-.video-creator {
-  font-size: 0.9rem;
+/* Adjust sidebar to not overlap with video grid */
+.sidebar-container {
+  position: fixed;
+  left: 0;
+  top: 0; /* Adjust if there's a navbar on top */
+  /* width: 125px; */
+  height: 100%; /* Take full height */
+  background-color: #f0f0f1;
+  z-index: 100; /* Ensure sidebar is above other content */
+  overflow-y: auto;
 }
