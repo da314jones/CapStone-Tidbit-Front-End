@@ -1,4 +1,4 @@
-/* SideBar.css */
+
 
 .sidebar {
   display: flex;
@@ -29,10 +29,10 @@
   transition: background-color 0.3s; /* Smooth background transition */
 }
 
-.sidebar nav ul li a.active,
+/* .sidebar nav ul li a.active,
 .sidebar nav ul li a:hover {
   /* background-color: #ddd; */
-}
+
 
 .sidebar-icon {
   width: 50px; /* Set your desired icon size */

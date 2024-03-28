@@ -14,7 +14,7 @@ import VideoSession from "./Components/VideoSession";
 import Dashboard from "./Components/Dashboard";
 import Profile from "./Components/Profile";
 import NavBar from "./Components/NavBar";
-import SideBar from "./Components/Sidebar";
+import SideBar from "../src/Components/SideBar";
 import ContentCreator from "./Components/ContentCreator";
 // import QuestionnaireModal from "./Components/QuestionnaireModal";
 Dashboard;
