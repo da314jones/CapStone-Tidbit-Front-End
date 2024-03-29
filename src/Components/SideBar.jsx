@@ -52,7 +52,7 @@ export default function SideBar() {
                 className="sidebar-icon"
                 style={{ transform: location.pathname  === '/dashboard' ? 'scale(2)' : 'scale(1)' }}
               />
-              Dashboard
+              DB
             </NavLink>
           </li>
           <li>

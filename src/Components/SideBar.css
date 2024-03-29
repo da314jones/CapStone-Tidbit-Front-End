@@ -9,8 +9,8 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 80px;
-  background-color: #0c0a0c;
+  width: 60px;
+  /* background-color: whitesmoke; */
   margin-top: 50px;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
@@ -50,11 +50,12 @@
 /* Style for active link text if needed */
 .sidebar nav ul li a.active {
   font-weight: bold;
-  color:#0d08bc; /* Make the text bold for active/hovered links */
+  font-family: "Century Gothic", sans-serif; 
+  color:#9f00e5;
 }
 
 .sidebar nav ul li a:hover{
-  color:#9f00e5;
+  color:#0d08bc;
 }
 /* .sidebar-icon {
   transform: scale(1.5)
