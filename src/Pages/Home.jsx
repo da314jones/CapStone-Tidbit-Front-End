@@ -21,9 +21,10 @@ export default function Home() {
 
   return (
     <>
-    <style>
-@import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap')
-</style>
+    <div className="header-container" id="header">
+  <canvas id="header"></canvas>
+  <h1>Tidbit</h1>
+</div>
    <div className="home-container flex items-center justify-center mt-50">
   <div className="carousel">
     <div className="image-container"> 
@@ -40,14 +41,15 @@ export default function Home() {
     <h2 className="home-header-title">
       Where Those Who Know Go to<span> Grow</span>
     </h2>
-    <p>
+    </div>
+    <div>
+    <p className="text-container">
     Welcome to our dynamic platform from technology to art, mathematics to fashion, we are the ultimate destination for discovering and sharing insightful treasures. Our mission is clear through straightforward guides and interactive features, we ignite curiosity and inspire discovery. Join us on this exciting journey where clarity meets simplicity. Together, let's reshape the way the world learns and shares knowledge.
     </p>
+    </div>
     <button className="start-learning-button">Start Learning</button>
   </div>
-</div>
-
-      <div>
+<div>
         <Footer />
       </div>
     </>

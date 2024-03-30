@@ -8,23 +8,35 @@ body {
   font-weight: 700;
   font-style: normal;
 }
-
+.header-container{
+  background-image: linear-gradient(60deg, rgba(199, 137, 218, 0.5) 0%,rgba(145, 65, 243, 0.4) 100%), url("https://images.unsplash.com/photo-1607748851687-ba9a10438621?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OTJ8fGRpdmVyc2UlMjBncm91cCUyMG9mJTIwZnJpZW5kc3xlbnwwfHwwfHx8MA%3D%3D");
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: none;
+  background-size: 15%;
+}
 .home-header-title {
   font-family: "Century Gothic", sans-serif; 
-  font-size: 36px;
+  font-size: 26px;
   font-weight: bold;
   color: #0d08bc;
-  margin-bottom: 20px;
+  margin-bottom: 100px;
+  top: 50%;
+  left: 50%;
+  font-weight: normal;
+  font-size: 4em;  
 }
 
 .home-header-title span {
   color: #9f00e5;
+  font-size: 85px;
+  margin-bottom: 10px; 
 }
 
 .image-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 100px; /* Adjusted margin to move pictures further down */
+  margin-bottom: 150px; 
 }
 
 .image-one,
@@ -48,7 +60,7 @@ body {
   margin-bottom: 200px; /* Adjusted margin to move pictures further down */
 }
 
-p {
+.text-container {
   font-family: "PT Serif", serif;
   font-size: 28px;
   text-align: left;
@@ -93,7 +105,7 @@ body {
     margin-bottom: 30px;
   }
   
-  p {
+  .text-container {
     margin-bottom: 10px;
   }
   

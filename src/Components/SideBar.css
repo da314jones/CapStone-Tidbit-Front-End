@@ -13,7 +13,7 @@
   /* background-color: whitesmoke; */
   margin-top: 50px;
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+  box-shadow: 2px 0 5px rgba(237, 238, 235, 0.1);
 }
 
 .sidebar nav ul {
@@ -51,11 +51,11 @@
 .sidebar nav ul li a.active {
   font-weight: bold;
   font-family: "Century Gothic", sans-serif; 
-  color:#9f00e5;
+  color:#121212;
 }
 
 .sidebar nav ul li a:hover{
-  color:#0d08bc;
+  color:#9f00e5;
 }
 /* .sidebar-icon {
   transform: scale(1.5)
