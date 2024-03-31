@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-import "./VideoNewform.css";
+import "./VideoNewForm.css"
 
 const API = import.meta.env.VITE_API_URL;
 
