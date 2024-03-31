@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Video from "./Video";
-import "./Dashboard.css";
+// import "./Dashboard.css";
 import { useNavigate } from "react-router-dom";
 const API = import.meta.env.VITE_API_URL;
 
