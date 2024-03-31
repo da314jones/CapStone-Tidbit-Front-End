@@ -1,9 +1,11 @@
 // SideBar.jsx
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useLocation } from "react-router-dom";
 import "./SideBar.css";
 
 export default function SideBar() {
+  const location = useLocation();
+
   return (
     <div className="sidebar">
       <nav>
@@ -18,13 +20,14 @@ export default function SideBar() {
                 src="/createVideoIcon.png"
                 alt="Create Video"
                 className="sidebar-icon"
+                style={{ transform: location.pathname  === '/session' ? 'scale(2)' : 'scale(1)' }}
               />
               Create Video
             </NavLink>
           </li>
           <li>
             <NavLink
-              to="/session"
+              to="/upload"
               activeClassName="active"
               className="sidebar-item"
             >
@@ -32,6 +35,7 @@ export default function SideBar() {
                 src="/uploadIcon.png"
                 alt="UploadVideo"
                 className="sidebar-icon"
+                style={{ transform: location.pathname  === '/upload' ? 'scale(2)' : 'scale(1)' }}
               />
               Upload Video
             </NavLink>
@@ -46,6 +50,7 @@ export default function SideBar() {
                 src="/dashboardIcon.png"
                 alt="Dashboard"
                 className="sidebar-icon"
+                style={{ transform: location.pathname  === '/dashboard' ? 'scale(2)' : 'scale(1)' }}
               />
               Dashboard
             </NavLink>
@@ -60,6 +65,7 @@ export default function SideBar() {
                 src="/profileIcon.png"
                 alt="Profile"
                 className="sidebar-icon"
+                style={{ transform: location.pathname  === '/profile' ? 'scale(2)' : 'scale(1)' }}
               />
               Profile
             </NavLink>
