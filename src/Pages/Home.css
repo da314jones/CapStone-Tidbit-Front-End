@@ -35,21 +35,29 @@ body {
 
 .image-container {
   display: flex;
-  justify-content: center;
-  margin-bottom: 150px; 
+  justify-content: center; /* Center items horizontally */
+  align-items: center; /* Center items vertically */
+  height: 100vh; /* Set height to full viewport height */
 }
 
-.image-one,
+.image-one {
+  width: 1500px;
+  height: auto;
+  height: 360px; 
+  margin-bottom: -27px;
+}
+
 .image-two,
 .image-three,
 .image-four,
 .image-five,
 .image-six {
-  width: 100%;
   max-width: 200px;
+  display:flex;
+  flex-direction: column;
   height: auto;
   margin-right: 10px;
-  margin-bottom: -100px;
+ 
 }
 
 .carousel {
@@ -57,7 +65,7 @@ body {
   flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
-  margin-bottom: 200px; /* Adjusted margin to move pictures further down */
+  margin-bottom: 200px;
 }
 
 .text-container {
@@ -102,7 +110,8 @@ body {
   }
   
   .carousel {
-    margin-bottom: 30px;
+    flex-direction: column; 
+    align-items: center; 
   }
   
   .text-container {
