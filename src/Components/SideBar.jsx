@@ -13,7 +13,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/session"
-              activeClassName="active"
+              // className="active"
               className="sidebar-item"
             >
               <img
@@ -28,7 +28,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/upload"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
@@ -43,7 +43,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/dashboard"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
@@ -58,7 +58,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/profile"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
