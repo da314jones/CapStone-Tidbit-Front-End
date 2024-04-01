@@ -24,7 +24,7 @@ export default function Home() {
    <div className="home-container flex items-center justify-center mt-50">
   <div className="carousel">
     <div className="image-container-left"> 
-      <img className="image-one" src="https://images.unsplash.com/photo-1616267626111-0c61eb1c3248?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODl8fGNvbnRlbnQlMjBjcmVhdG9yfGVufDB8fDB8fHwy" alt="Image 1" />
+      <img className="image-one" src="https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1" />
     </div>
     <div className="image-container-right"> 
     <img className="image-two" src="https://images.unsplash.com/photo-1628359355624-855775b5c9c4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGNvbnRlbnQlMjBjcmVhdG9yfGVufDB8fDB8fHwy" alt="Image 2" />
