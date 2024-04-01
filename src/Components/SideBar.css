@@ -13,7 +13,7 @@
   /* background-color: whitesmoke; */
   margin-top: 50px;
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(237, 238, 235, 0.1);
+  box-shadow: 2px 0 5px rgba(220, 237, 185, 0.1);
 }
 
 .sidebar nav ul {
@@ -26,14 +26,14 @@
   display: block;
   padding: 15px; 
   text-decoration: none;
-  transition: background-color 0.3s; /* Smooth background transition */
+  transition: background-color 0.3s; 
 }
 
 .sidebar-icon {
-  width: 30px; /* Set your desired icon size */
+  width: 30px; 
   height: auto;
-  margin-right: 10px; /* Add some space between the icon and the text */
-  vertical-align: middle; /* Align the icon with the text */
+  margin-right: 10px; 
+  vertical-align: middle; 
   border-radius: 10px;
 }
 

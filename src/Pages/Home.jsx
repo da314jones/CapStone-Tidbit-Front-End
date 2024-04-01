@@ -33,21 +33,25 @@ export default function Home() {
       <img className="image-five" src="https://images.unsplash.com/photo-1581094285214-779d97298443?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fGNvbnRlbnQlMjBjcmVhdG9yJTIwZW5naW5lZXJpbmd8ZW58MHx8MHx8fDI%3D" alt="Image 5" />
     </div>
   </div>
-
-  <div>
+<div className="video-container">  
+<div className="video-one">
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/WfOiSxLZEfk?si=aQBwjDQ4DGuOpQ09" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+</div>
+  <div className="title-container">
     <h2 className="home-header-title">
-      Where Those Who Know Go to<span> Grow</span>
+      Where Those Who <br></br> Know Go to<span> Grow</span>
     </h2>
   </div>
-  <div>
-    <p className="text-container">
-      Welcome to our dynamic platform from technology to art, mathematics to fashion, we are the ultimate destination for discovering and sharing insightful treasures. Our mission is clear through straightforward guides and interactive features, we ignite curiosity and inspire discovery. Join us on this exciting journey where clarity meets simplicity. Together, let's reshape the way the world learns and shares knowledge.
-    </p>
+  <div className="text-container">
+    <div>
+    "Welcome to our cutting-edge platform, where sharing bite-sized pieces of information is as easy as a click. Nourish your minds with unlimited knowledge at your fingertips. Our app empowers you to discover, share, and explore the world's wisdom effortlessly. Join us on this transformative journey, where curiosity knows no bounds and knowledge is just a tap away."
+      {/* Welcome to our dynamic platform from technology to art, mathematics to fashion, we are the ultimate destination for discovering and sharing insightful treasures. Our mission is clear through straightforward guides and interactive features, we ignite curiosity and inspire discovery. Join us on this exciting journey where clarity meets simplicity. Together, let's reshape the way the world learns and shares knowledge. */}
+    </div>
   </div>
   <button className="start-learning-button">Start Learning</button>
 </div>
 <div>
-        <Footer />
+   <Footer />
       </div>
     </>
   );
