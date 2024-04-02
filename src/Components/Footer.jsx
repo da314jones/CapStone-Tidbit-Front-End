@@ -1,19 +1,19 @@
 import React from 'react'
 
 export default function Footer() {
-  const carousel = document.querySelector('.carousel');
+//   const carousel = document.querySelector('.carousel');
 
-carousel.addEventListener('scroll', () => {
-  const videos = document.querySelectorAll('.video-container');
-  videos.forEach(video => {
-    const rect = video.getBoundingClientRect();
-    if (rect.left >= 0 && rect.right <= window.innerWidth) {
-      video.play();
-    } else {
-      video.pause();
-    }
-  });
-});
+// carousel.addEventListener('scroll', () => {
+//   const videos = document.querySelectorAll('.video-container');
+//   videos.forEach(video => {
+//     const rect = video.getBoundingClientRect();
+//     if (rect.left >= 0 && rect.right <= window.innerWidth) {
+//       video.play();
+//     } else {
+//       video.pause();
+//     }
+//   });
+// });
 
   // const [videoSamples, setVideosSamples] = useState([]);
 
