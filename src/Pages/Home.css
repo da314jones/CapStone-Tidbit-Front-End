@@ -68,8 +68,14 @@ body {
   height: 100vh; /* Set height to full viewport height */
 }
 
+.tidbit-header{
+color: black;
+font-size: 20px;
+margin-bottom: -60px;
+}
+
 .image-one {
-  width: 1500px;
+  width: 1100px;
   height: auto;
   height: 360px; 
   margin-bottom: -27px;
@@ -136,31 +142,38 @@ body {
 
 @media screen and (max-width: 768px) {
   .home-header-title {
-    font-size: 20px; /* Adjust font size for smaller screens */
-    right: 10px; /* Adjust right position */
-    top: 20px; /* Adjust top position */
-    transform: translateY(0); /* Remove vertical centering */
+    font-size: 26px; /* Keep the font size consistent with the desktop */
+    right: 20px; /* Keep the right position consistent with the desktop */
+    top: 50%; /* Keep the top position consistent with the desktop */
+    transform: translateY(-50%); /* Keep the vertical centering consistent */
   }
 
   .video-container {
     left: 10px; /* Adjust left position for smaller screens */
     top: 20%; /* Adjust top position for smaller screens */
+    transform: translateY(-50%); /* Keep the vertical centering consistent */
   }
 
   .video-container iframe {
-    width: 90%; /* Adjust width for smaller screens */
+    width: 100%; /* Keep the width consistent with the desktop */
     height: auto; /* Make height auto to maintain aspect ratio */
-    margin-top: 20px; /* Adjust margin top */
+    margin-top: 500px; /* Adjust margin top for smaller screens */
   }
 
   .text-container {
-    font-size: 18px; /* Adjust font size for smaller screens */
-    top: calc(50% + 50px); /* Adjust top position */
-    right: 10px; /* Adjust right position */
-    width: 80%; /* Adjust width for smaller screens */
+    font-size: 20px; /* Keep the font size consistent with the desktop */
+    top: 90%; /* Keep the top position consistent with the desktop */
+    right: 50px; /* Keep the right position consistent with the desktop */
+    width: calc(40%); /* Keep the width consistent with the desktop */
   }
 
   .start-learning-button {
-    margin-bottom: 30px; /* Adjust margin bottom */
+    width: 90%; /* Keep the width consistent with the desktop */
+    max-width: 300px; /* Keep the max-width consistent with the desktop */
+    height: 85px; /* Keep the height consistent with the desktop */
+    font-size: 24px; /* Keep the font size consistent with the desktop */
+    top: 128%; /* Keep the top position consistent with the desktop */
+    left: 77%; /* Keep the left position consistent with the desktop */
+    transform: translateX(-50%); /* Keep the horizontal centering consistent */
   }
 }
