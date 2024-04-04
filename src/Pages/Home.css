@@ -6,6 +6,7 @@
 body {
   font-family: "Century Gothic", sans-serif; 
   font-weight: 700;
+  background-color: white;
   font-style: normal;
 }
 
@@ -17,39 +18,33 @@ body {
   background-size: 15%;
 }
 
-.home-header-title {
+ .home-header-title {
   font-family: "Century Gothic", sans-serif; 
   font-size: 26px;
   font-weight: bold;
   color: black;
   position: absolute;
-  top: 30%;
-  left: 400px;
-  right: 350px;
-  font-weight: normal;
-  font-size: 4em;  
-}
+  top: 20%;
+  left: 315px;
+  font-weight: bold;
+  font-size: 3.5em;  
+} 
 
 .home-header-title span {
   color: #9f00e5;
   font-size: 85px;
   margin-bottom: 20px; 
-}
-.image-container {
-  display: flex;
-  justify-content: center; /* Center items horizontally */
-  align-items: center; /* Center items vertically */
-  height: 100vh; /* Set height to full viewport height */
-}
+} 
+
 .image-container-left {
   margin-bottom: 70px;
-  margin-top: 48px;
-  margin-left: 500px; /* Adjust the left margin as needed */
+  margin-left: 500px; 
+  
 }
 
 .image-container-right {
-  margin-top: -100px;
-  margin-right: 86px; /* Adjust the right margin as needed */
+  margin-top: -115px;
+  margin-bottom: 40px;
 }
 
 .image-one,
@@ -58,7 +53,11 @@ body {
 .image-four,
 .image-five,
 .image-six {
-  margin: 0; /* Reset margins for images 1 to 6 */
+  margin: 0; 
+  width: 64%;
+  margin-top: -263.5px;
+  margin-left: 300px;
+  margin-right: 330px;
 }
 
 .image-seven,
@@ -67,27 +66,13 @@ body {
 .image-ten,
 .image-eleven,
 .image-twelve {
-  margin: 0; /* Reset margins for images 7 to 12 */
+  margin-top: -500px;
+  margin-left: 80px;
+ width: 20%;
+  margin-right: 890px;
 }
-
-.tidbit-video {
-  margin-top: -100px;
-  
-}
-
-.tidbit-video-header {
-  margin-top: -1200px;
-  margin-bottom: 20px;
+.tidbit-video-header{
   color: black;
-}
-
-
-
-.image-container-right img {
-  max-width: 100%; 
-}
-.image-container-left img{
-  max-width: 100%;
 }
 .text-container {
   font-family: "PT Serif", serif;
@@ -102,17 +87,12 @@ body {
 }
 
 .text-intro {
-  margin-top: -1000px;
   margin-left: -150px;
   margin-right: 300px;
-}
-
-body {
-  background-color: whitesmoke;
+  margin-top: 60px;
 }
 
 .start-learning-button {
-  /* width: 70%; */
   max-width: 300px;
   height: 85px;
   font-size: 18px;
@@ -125,7 +105,7 @@ body {
   box-shadow: 0px 4px 8px rgba(255, 247, 247, 0.2);
   position: absolute; 
   margin-top: 10px;
-  top: 1000px;
+  /* top: 1000px; */
   left: 51%; 
   transform: translateX(-50%); 
 }
