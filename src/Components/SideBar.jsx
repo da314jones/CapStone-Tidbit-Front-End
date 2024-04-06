@@ -13,7 +13,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/session"
-              activeClassName="active"
+              // className="active"
               className="sidebar-item"
             >
               <img
@@ -43,7 +43,7 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/dashboard"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
@@ -52,13 +52,13 @@ export default function SideBar() {
                 className="sidebar-icon"
                 style={{ transform: location.pathname  === '/dashboard' ? 'scale(1.2)' : 'scale(1)' }}
               />
-              Dashboard
+              DB
             </NavLink>
           </li>
           <li>
             <NavLink
               to="/profile"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
