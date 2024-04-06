@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-   <div className="home-container flex items-center justify-center mt-50">
+   <div className="home-container flex items-center justify-center mt-50 p-8">
   <div className="carousel">
     <div className="image-container-left"> 
       <img className="image-one" src="https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1" />
@@ -35,7 +35,7 @@ export default function Home() {
   </div>
 <div className="video-container">  
 <div className="video-one">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/WfOiSxLZEfk?si=aQBwjDQ4DGuOpQ09" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe></div>
+  <iframe width="560" height="315" src="https://www.youtube.com/embed/WfOiSxLZEfk?si=aQBwjDQ4DGuOpQ09" title="YouTube video player" frameBorder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" allowFullScreen></iframe></div>
 </div>
   <div className="title-container">
     <h2 className="home-header-title">

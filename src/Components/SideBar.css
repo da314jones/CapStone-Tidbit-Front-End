@@ -9,11 +9,11 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 60px;
+  width: 83px;
   /* background-color: whitesmoke; */
-  margin-top: 50px;
+  margin-top: 1px;
   padding: 20px;
-  box-shadow: 2px 0 5px rgba(220, 237, 185, 0.1);
+  box-shadow: 2px 0 5px rgba(237, 238, 235, 0.1);
 }
 
 .sidebar nav ul {
@@ -26,14 +26,14 @@
   display: block;
   padding: 15px; 
   text-decoration: none;
-  transition: background-color 0.3s; 
+  transition: background-color 0.3s; /* Smooth background transition */
 }
 
 .sidebar-icon {
-  width: 30px; 
+  width: 30px; /* Set your desired icon size */
   height: auto;
-  margin-right: 10px; 
-  vertical-align: middle; 
+  margin-right: 10px; /* Add some space between the icon and the text */
+  vertical-align: middle; /* Align the icon with the text */
   border-radius: 10px;
 }
 
