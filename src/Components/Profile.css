@@ -1,46 +1,29 @@
 .profile-container {
-  display: flex;
-  align-items: flex-start;
-}
-
-.sidebar {
-  flex: 0 0 20%;
-  background-color: #f0f0f0;
-  padding: 20px;
-}
-
-.sidebar-icon {
-  margin-bottom: 20px;
-}
-
-.main-content {
-  flex: 1;
-  padding: 20px;
-}
-
-.top-section {
-  display: flex;
   align-items: center;
-}
-
-.logo {
-  position: absolute;
-  top: 20px;
-  left: 20px;
-}
-
-.logo img {
-  width: 100px;
-  height: auto;
+  padding-top: 60px;
+  display: grid;
+  grid-template-columns: auto 1fr; /* Personal info on the left, videos on the right */
+  grid-gap: 20px; /* Add gap between grid items */
 }
 
 .profile-info {
   display: flex;
-  flex-direction: column; /* Change to column to stack items vertically */
+  flex-direction: column;
   align-items: center;
   border: 2px solid #0D08BA;
   border-radius: 15px;
-  padding: 20px; /* Add padding for spacing */
+  padding: 20px;
+  margin-left: 80px;
+}
+
+.editbutton {
+  background-color: #0d08ba; 
+  color: white;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  box-shadow: 0px 4px 8px rgba(255, 247, 247, 0.2);
 }
 
 .profile-picture {
@@ -58,26 +41,44 @@
 }
 
 .profile-name {
-  margin-top: 10px; /* Adjust margin for spacing */
+  margin-top: 10px;
 }
 
 .profile-details {
   margin-top: 20px;
-  text-align: center; /* Align text in the center */
+  text-align: center;
 }
 
 .profile-details .text {
   color: black;
 }
 
+.main-content {
+  display: flex; /* Keep the flex display for videos */
+  flex-direction: column;
+}
 
 .tidbits {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  justify-content: space-around;
 }
 
-.tidbits-section {
-  flex: 0 0 48%;
+.videos-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns */
+  grid-gap: 20px;
+}
+
+.profile-video-card {
+  width: 100%;
+  margin: 10px;
+  text-align: center;
+}
+
+.profile-video-card video {
+  width: 100%;
+  height: auto;
 }
 
 .message-button {
@@ -90,30 +91,30 @@
   cursor: pointer;
 }
 
-.tidbits {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
-}
-
-.video-card {
-  width: calc(25% - 20px);
-  margin: 10px;
-  text-align: center;
-}
-
-.video-card video {
-  width: 100%;
-  height: auto;
-}
-
-.video-info,
-.video-title,
-.video-creator {
-  margin-top: 5px;
-}
-
 .text {
   color: black;
 }
 
+/* Media Queries */
+@media screen and (max-width: 768px) {
+  .profile-container {
+    grid-template-columns: 1fr; /* Personal info and videos stacked on top of each other */
+    padding: 90px; /* Reduce padding */
+    grid-gap: 10px; /* Reduce gap */
+  }
+
+  .profile-info {
+    margin-left: 0; /* Remove left margin */
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .profile-picture {
+    width: 80px; /* Decrease picture size */
+    height: 80px;
+  }
+
+  .profile-info {
+    padding: 10px; /* Decrease padding */
+  }
+}
