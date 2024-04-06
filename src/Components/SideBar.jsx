@@ -13,14 +13,14 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/session"
-              activeClassName="active"
+              // className="active"
               className="sidebar-item"
             >
               <img
                 src="/createVideoIcon.png"
                 alt="Create Video"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/session' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/session' ? 'scale(1.3)' : 'scale(1)' }}
               />
               Create Video
             </NavLink>
@@ -35,7 +35,7 @@ export default function SideBar() {
                 src="/uploadIcon.png"
                 alt="UploadVideo"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/upload' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/upload' ? 'scale(1.6)' : 'scale(1)' }}
               />
               Upload Video
             </NavLink>
@@ -43,14 +43,14 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/dashboard"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
                 src="/dashboardIcon.png"
                 alt="Dashboard"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/dashboard' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/dashboard' ? 'scale(1.2)' : 'scale(1)' }}
               />
               DB
             </NavLink>
@@ -58,14 +58,14 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/profile"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
               <img
                 src="/profileIcon.png"
                 alt="Profile"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/profile' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/profile' ? 'scale(1.3)' : 'scale(1)' }}
               />
               Profile
             </NavLink>
