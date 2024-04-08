@@ -4,21 +4,6 @@ import { useNavigate } from "react-router-dom";
 import Footer from "../Components/Footer";
 
 export default function Home() {
-  const [modalOpen, setModalOpen] = useState(false);
-  const navigate = useNavigate();
-
-  const goToDashboard = () => {
-    navigate("/dashboard");
-  };
-
-  const openModal = () => {
-    setModalOpen(true);
-  };
-
-  const closeModal = () => {
-    setModalOpen(false);
-  };
-
   return (
 
    <div className="container">
@@ -56,7 +41,6 @@ export default function Home() {
   <div className="text-container">
     <div className="text-intro">
     "Welcome to our cutting-edge platform, where sharing bite-sized pieces of information is as easy as a click. Nourish your minds with unlimited knowledge at your fingertips. Our app empowers you to discover, share, and explore the world's wisdom effortlessly. Join us on this transformative journey, where curiosity knows no bounds and knowledge is just a tap away."
-      {/* Welcome to our dynamic platform from technology to art, mathematics to fashion, we are the ultimate destination for discovering and sharing insightful treasures. Our mission is clear through straightforward guides and interactive features, we ignite curiosity and inspire discovery. Join us on this exciting journey where clarity meets simplicity. Together, let's reshape the way the world learns and shares knowledge. */}
     </div>
   </div>
   <button className="start-learning-button">Start Learning</button>
