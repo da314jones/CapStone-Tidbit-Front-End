@@ -20,7 +20,7 @@ export default function SideBar() {
                 src="/createVideoIcon.png"
                 alt="Create Video"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/session' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/session' ? 'scale(1.3)' : 'scale(1)' }}
               />
               Create Video
             </NavLink>
@@ -28,14 +28,14 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/upload"
-              // activeClassName="active"
+              activeClassName="active"
               className="sidebar-item"
             >
               <img
                 src="/uploadIcon.png"
                 alt="UploadVideo"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/upload' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/upload' ? 'scale(1.6)' : 'scale(1)' }}
               />
               Upload Video
             </NavLink>
@@ -50,7 +50,7 @@ export default function SideBar() {
                 src="/dashboardIcon.png"
                 alt="Dashboard"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/dashboard' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/dashboard' ? 'scale(1.2)' : 'scale(1)' }}
               />
               DB
             </NavLink>
@@ -65,7 +65,7 @@ export default function SideBar() {
                 src="/profileIcon.png"
                 alt="Profile"
                 className="sidebar-icon"
-                style={{ transform: location.pathname  === '/profile' ? 'scale(2)' : 'scale(1)' }}
+                style={{ transform: location.pathname  === '/profile' ? 'scale(1.3)' : 'scale(1)' }}
               />
               Profile
             </NavLink>

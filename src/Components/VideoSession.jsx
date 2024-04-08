@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
 import VideoNewForm from "./VideoNewForm";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
 const API = import.meta.env.VITE_API_URL;
@@ -29,6 +30,7 @@ export default function VideoSession() {
     try {
       const sessionRes = await fetch(`${API}/videos/session`, {
         method: "POST",
+        body: user
       });
       if (!sessionRes.ok) throw new Error("Failed to fetch session");
       const sessionData = await sessionRes.json();
@@ -47,7 +49,7 @@ export default function VideoSession() {
       console.error("Error fetching session and token:", error);
     }
   };
-
+  console.log(fetchSessionAndToken)
   const startSession = async () => {
     await fetchSessionAndToken();
     setIsConnected(true);

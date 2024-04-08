@@ -5,8 +5,8 @@ import Footer from "../Components/Footer";
 
 export default function Home() {
   return (
-
-   <div className="container">
+    <>
+   <div className="home-container flex items-center justify-center mt-50 p-8">
   <div className="carousel">
     <div className="image-container-left"> 
       <img className="image-one" src="https://images.unsplash.com/photo-1628359355624-855775b5c9c4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGNvbnRlbnQlMjBjcmVhdG9yfGVufDB8fDB8fHwy" alt="Image 1" />
@@ -25,6 +25,7 @@ export default function Home() {
       <img className="image-twelve" src="https://images.unsplash.com/photo-1628359355624-855775b5c9c4?w=400&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8ODJ8fGNvbnRlbnQlMjBjcmVhdG9yfGVufDB8fDB8fHwy" alt="Image 12" />
     </div>
   </div>
+
   <div className="tidbit-container">
   <h2 className="tidbit-video-header">Tidbit of the Day!🎉</h2>
      </div> 
