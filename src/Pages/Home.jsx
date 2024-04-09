@@ -5,7 +5,6 @@ import Footer from "../Components/Footer";
 
 export default function Home() {
   return (
-    <>
    <div className="home-container flex items-center justify-center mt-50 p-8">
   <div className="carousel">
     <div className="image-container-left"> 
