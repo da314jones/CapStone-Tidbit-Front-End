@@ -35,11 +35,11 @@ export default function NavBar() {
   return (
     <div className="navbar-container">
      <Link to='/'>
-     {/* <img
+     <img
         className="brand-logo"
         src={"/tidbitLogo.png"}
         alt="Tidbits Brand Logo"
-      /> */}
+      />
      </Link> 
       <div className="profile-menu">
         <img
