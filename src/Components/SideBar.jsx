@@ -2,6 +2,7 @@
 import React from "react";
 import { NavLink, useLocation } from "react-router-dom";
 import "./SideBar.css";
+import { FaFileUpload } from "react-icons/fa";
 
 export default function SideBar() {
   const location = useLocation();
@@ -13,7 +14,6 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/session"
-              // className="active"
               className="sidebar-item"
             >
               <img
@@ -28,16 +28,17 @@ export default function SideBar() {
           <li>
             <NavLink
               to="/upload"
-              activeClassName="active"
+              // activeClassName="active"
               className="sidebar-item"
             >
-              <img
+              {/* <img
                 src="/uploadIcon.png"
                 alt="UploadVideo"
                 className="sidebar-icon"
                 style={{ transform: location.pathname  === '/upload' ? 'scale(1.6)' : 'scale(1)' }}
-              />
-              Upload Video
+              /> */}
+              <FaFileUpload />
+              Upload
             </NavLink>
           </li>
           <li>
