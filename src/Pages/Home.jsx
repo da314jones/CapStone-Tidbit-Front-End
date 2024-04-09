@@ -21,7 +21,7 @@ export default function Home() {
 
   return (
     <>
-   <div className="home-container flex items-center justify-center mt-50 p-8">
+   <div className="home-container flex items-center justify-center mt-50">
   <div className="carousel">
     <div className="image-container-left"> 
       <img className="image-one" src="https://images.unsplash.com/photo-1548705085-101177834f47?q=80&w=2832&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="Image 1" />

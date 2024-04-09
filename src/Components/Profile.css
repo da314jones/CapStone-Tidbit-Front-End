@@ -1,9 +1,17 @@
+.profile-page {
+  display: flex;
+  flex-direction: row;
+  margin-left: 27px;
+}
 .profile-container {
   align-items: center;
   padding-top: 60px;
   display: grid;
   grid-template-columns: auto 1fr; /* Personal info on the left, videos on the right */
   grid-gap: 20px; /* Add gap between grid items */
+  max-height: 90%;
+  border: 4px solid red;
+  overflow: scroll;
 }
 
 .profile-info {
@@ -13,7 +21,9 @@
   border: 2px solid #0D08BA;
   border-radius: 15px;
   padding: 20px;
-  margin-left: 80px;
+  /* margin-left: 20px; */
+  height: 500px;
+  width: 300px;
 }
 
 .editbutton {
@@ -62,6 +72,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  max-height: 500px;
 }
 
 .videos-grid {
@@ -96,9 +107,9 @@
 }
 
 /* Media Queries */
-@media screen and (max-width: 768px) {
-  .profile-container {
-    grid-template-columns: 1fr; /* Personal info and videos stacked on top of each other */
+@media screen and (max-width: 844px) {
+  .profile-page {
+    flex-direction: column;
     padding: 90px; /* Reduce padding */
     grid-gap: 10px; /* Reduce gap */
   }

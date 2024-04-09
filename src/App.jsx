@@ -57,6 +57,7 @@ function App() {
         /> */}
             <Router>
               <NavBar />
+              <div className="side-routes">
               <SideBar />
               <Routes>
                 <Route path="/" element={<Home />} />
@@ -72,6 +73,7 @@ function App() {
                   element={<ContentCreator />}
                 />
               </Routes>
+              </div>
             </Router>
             {/* <button onClick={openQuestionnaireModal}>Open Questionnaire</button> */}
           </div>

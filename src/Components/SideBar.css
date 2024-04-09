@@ -9,11 +9,12 @@
   left: 0;
   top: 0;
   bottom: 0;
-  width: 83px;
-  /* background-color: whitesmoke; */
+  width: 110px;
+  background-color: #A4B0F5;
   margin-top: 1px;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(237, 238, 235, 0.1);
+  border: 3px  solid purple;
 }
 
 .sidebar nav ul {
