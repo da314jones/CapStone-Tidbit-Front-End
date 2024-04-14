@@ -1,5 +1,3 @@
-
-
 .sidebar {
   display: flex;
   flex-direction: column;
@@ -13,7 +11,8 @@
   background-color: white;
   padding: 20px;
   box-shadow: 2px 0 5px rgba(237, 238, 235, 0.1);
-  border: 3px  solid purple;
+  /* border: 3px  solid purple; */
+  margin-top: 95px;
 }
 
 .sidebar nav ul {

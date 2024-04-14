@@ -15,6 +15,7 @@ export default function VideoSession() {
   const [archiveId, setArchiveId] = useState("");
   const [archiveUrl, setArchiveUrl] = useState("");
   const [showVideoNewForm, setShowVideoNewForm] = useState(false);
+  // const user = useContext(AuthContext);
 
   // Dynamically load the OpenTok SDK
   useEffect(() => {
@@ -30,7 +31,7 @@ export default function VideoSession() {
     try {
       const sessionRes = await fetch(`${API}/videos/session`, {
         method: "POST",
-        body: user
+        // body: user
       });
       if (!sessionRes.ok) throw new Error("Failed to fetch session");
       const sessionData = await sessionRes.json();

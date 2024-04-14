@@ -36,7 +36,7 @@ export default function Profile() {
     <div className="text_profile-details">
       <div className="text profile-name">
         {user ? (
-          <h4>{user.displayName}</h4>
+          <h4 className="mb-4">{user.displayName}</h4>
         ) : (
           user === null ? (
             <h1>Loading while you are signed in...</h1>
@@ -45,8 +45,8 @@ export default function Profile() {
           )
         )}
       </div>
-      <h4 className="text">Skills:</h4>
-      <h4 className="text">Interests:</h4>
+      <h4 className="text mb-4">Skills:</h4>
+      <h4 className="text mb-4">Interests:</h4>
       <button className="editbutton">Edit Profile</button>
     </div>
   </div>

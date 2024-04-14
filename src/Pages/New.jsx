@@ -1,12 +1,14 @@
 import React from "react";
-import VideoNewForm from "../Components/VideoNewForm";
+import VideoSession from "../Components/VideoSession";
+import VideoManagement from "../Components/VideoManagement";
+
 // POST
 
 export default function New() {
   
   return (
     <div>
-      <VideoNewForm />
+      <VideoManagement />
     </div>
   );
 }

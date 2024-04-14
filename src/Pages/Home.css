@@ -1,0 +1,45 @@
+.home-page {
+  display: flex;
+}
+
+.home-page-details {
+  display: flex;
+  color: black;
+  flex-direction: column;
+  align-items: center;
+  text-align: left;
+  padding-left: 15px;
+}
+
+.home-page-explain {
+  font-family: "Lato", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.go-to-grow {
+    display: flex;
+    flex-direction: column;
+    font-family: "Archivo", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+    font-variation-settings:
+      "wdth" 100;
+  color: #0d08ba;
+}
+
+.learner-music {
+  max-width: 85%;
+  height: auto;
+  margin-left: 90px;
+}
+
+.grow {
+  color: #e79efd;
+}
+
+.start-learning {
+ background-color: #0d08ba;
+ color: white;
+}

@@ -59,7 +59,7 @@ export default function SideBar() {
                 style={{ transform: location.pathname  === '/dashboard' ? 'scale(1.2)' : 'scale(1)' }}
               /> */}
               <RxDashboard style={{ transform: location.pathname  === '/dashboard' ? 'scale(1.2)' : 'scale(1)' }} />
-              DB
+              My Dashboard
             </NavLink>
           </li>
           <li>

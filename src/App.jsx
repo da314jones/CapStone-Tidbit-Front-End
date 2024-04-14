@@ -61,12 +61,13 @@ function App() {
               <SideBar />
               <Routes>
                 <Route path="/" element={<Home />} />
-                <Route path="/session" element={<VideoSession />} />
+                <Route path="/session" element={<New />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/dashboard" element={<Index />} />
                 <Route path="/videos/:id" element={<Show />} />
                 <Route path="/videos/edit" element={<Edit />} />
                 <Route path="/videos/new" element={<New />} />
+                <Route path="/creator/:creatorId" element={<ContentCreator />} />
                 <Route path="*" element={<FourOFour />} />
                 <Route
                   path="/creator/:creatorId"
