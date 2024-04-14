@@ -1,11 +1,15 @@
-import React from 'react'
-import { useParams } from 'react-router-dom'
-import Video from './Video'
+// ContentCreator.jsx
+import React from 'react';
+import { useParams, useLocation } from 'react-router-dom';
+import Video from './Video';
 
-export default function ContentCreator({ videos }) {
+export default function ContentCreator() {
   const { creatorId } = useParams();
+  const { state: { videos } } = useLocation(); // Retrieve videos array from location state
 
-  const  creatorVideos = videos.filter(video => video.creatorId === creatorId)
+  console.log(videos)
+
+  const creatorVideos = videos.filter(video => video.creatorId === creatorId);
 
   return (
     <div>
@@ -15,6 +19,5 @@ export default function ContentCreator({ videos }) {
           ))}
         </div>
     </div>
-  )
+  );
 }
-

@@ -1,14 +1,18 @@
 /* Main container styles */
 .main-container {
   flex-grow: 1;
-  padding-left: 125px;
+  /* padding-left: 125px; */
   display: flex;
   flex-wrap: wrap;
   gap: 20px; 
   justify-content: flex-end; 
   align-items: center; 
-  background: #ecf0f1;
-  margin-top: 30vh; 
+  /* background: #ecf0f1; */
+  /* margin-top: 30vh;  */
+}
+
+.dashboard {
+  color: black;
 }
 
 /* Buttons container styles */
@@ -19,7 +23,7 @@
   flex-wrap: wrap;
   gap: 20px; 
   justify-content: flex-start;  
-  background: #ecf0f1;
+  /* background: #ecf0f1; */
 }
 
 /* Video list container styles */
@@ -31,21 +35,25 @@
   gap: 20px; 
   justify-content: flex-end; 
   align-items: center; 
-  background: #ecf0f1;
+  /* background: #ecf0f1; */
   margin-top: 30vh; 
 }
 
 /* Video card styles */
 .video-card {
+  /* display: flex;
   width: calc(15% - 5px);
   margin-bottom: 20px;
   background: white;
   padding: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); */
+  cursor: pointer;
+  height: 120px;
+  width: 280px;
 }
 
 /* Responsive adjustments for fewer videos per row on smaller screens */
-@media (max-width: 1024px) {
+/* @media (max-width: 1024px) {
   .video-card {
     width: calc(25% - 20px);
   }
@@ -61,7 +69,7 @@
   .video-card {
     width: calc(100% - 20px);
   }
-}
+} */
 
 /* Adjust sidebar to not overlap with video grid */
 .sidebar-container {
