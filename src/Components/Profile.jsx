@@ -7,6 +7,7 @@ const API = import.meta.env.VITE_API_URL;
 
 export default function Profile() {
   const user = useContext(AuthContext);
+  const [more, setMore] = useState(false);
   const [myVideos, setMyVideos] = useState([]);
   console.log(user);
 
@@ -24,6 +25,7 @@ export default function Profile() {
   }, []);
 
   return (
+    <>
     <div className="profile-page">
     <div className="profile-info">
     <div className="profile-picture">
@@ -50,15 +52,17 @@ export default function Profile() {
       <button className="editbutton">Edit Profile</button>
     </div>
   </div>
+  <h2 className="text uploaded">Uploaded Tidbits</h2>
 <div className="profile-container">
   <div className="main-content">
     <div className="tidbits">
-      <h2 className="text">Your Uploaded Tidbits</h2>
       {user ? (
-        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-          {[...Array(24)].map((_, index) => (
-            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg">
-              <video width="280" height="120" controls>
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8" >
+          {[...Array(24)].map((_, index) => {
+            if(index <= 7){
+              return(
+            <div key={index} className="bg-white rounded-lg overflow-hidden shadow-lg" >
+              <video width="300" controls>
                 <source src="dummy_video.mp4" type="video/mp4" />
                 Your Browser does not support the video tag.
               </video>
@@ -66,16 +70,20 @@ export default function Profile() {
                 <div className="text-lg font-semibold mb-2">Dummy Video Title</div>
                 <div className="text-sm text-gray-600">Dummy Video Creator</div>
               </div>
-            </div>
-          ))}
+            </div>)
+            }
+})}
         </div>
       ) : (
         <h1 className="text-lg font-semibold mb-2">Login to see your videos</h1>
       )}
     </div>
   </div>
+  
 </div>
     </div>
+    
+    </>
   );
 }
 
