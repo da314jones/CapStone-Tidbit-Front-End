@@ -7,35 +7,38 @@ const API = import.meta.env.VITE_API_URL;
 
 export default function Dashboard() {
   const [videos, setVideos] = useState([]);
+  const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+
+
+
   useEffect(() => {
-    const fetchVideos = async () => {
-      try {
-        const response = await fetch(`${API}/videos/index-thumbnails`);
-        const data = await response.json();
-        if (response.ok) {
-          console.log("Fetched videos:", data);
-          setVideos(data.thumbnailSignedUrls || []);
-        } else {
-          throw new Error(data.message || "Failed to fetch videos");
-        }
-      } catch (error) {
-        console.error("Error fetching videos:", error);
-      }
-    };
-    fetchVideos();
+    fetch(`${API}/videos/index-thumbnails`)
+    .then((response) => response.json())
+    .then((data) => {
+        console.log(data.processedData);
+        setThumbnails(data.processedData);
+        console.log(thumbnails)
+        // setVideos(data); 
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
   }, []);
+
+
   const handleSelectVideo = async (video) => {
-    console.log(video.s3_key)
-    const url = `${API}/generate-signed-url/${encodeURIComponent(video.s3_key)}`;
+    console.log(videos.s3_key)
+    const url = `${API}/generate-signed-url/${encodeURIComponent(videos.s3_key)}`;
     console.log('Requesting signed URL from:', url)
     try {
       const response = await fetch(url);
       const data = await response.json();
       if (response.ok) {
-        setSelectedVideo({ ...video, videoSrc: video.signedVideoUrl });
+        setSelectedVideo({ ...videos, videoSrc: videos.signedVideoUrl });
         setIsModalOpen(true);
+        console.log(data.response)
       } else {
         throw new Error(data.message || 'Failed to fetch videoURL');
       }
@@ -43,16 +46,17 @@ export default function Dashboard() {
       console.error('Error fetching video URL:', error);
     }
   };
+  
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
   }
   return (
     <div className="main-container">
-      <div className="videoList-container">
-        {videos.map((video, index) => (
-          <div key={index} className='video-card' onClick={() => handleSelectVideo(video)}>
-            <img src={video.signedUrl} className="thumbnail" alt={video.title} loading="lazy" />
+       <div className="videoList-container">
+        {thumbnails.map((thumbnail, index) => (
+          <div key={index} className="video-card">
+            <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
           </div>
         ))}
       </div>
@@ -64,3 +68,4 @@ export default function Dashboard() {
     </div>
   );
 }
+
