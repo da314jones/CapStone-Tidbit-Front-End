@@ -32,7 +32,7 @@ export default function SideBar() {
           </li>
           <li>
             <NavLink
-              to="/upload"
+              to="/videos/edit"
               // activeClassName="active"
               className="sidebar-item"
             >
@@ -42,7 +42,7 @@ export default function SideBar() {
                 className="sidebar-icon"
                 style={{ transform: location.pathname  === '/upload' ? 'scale(1.6)' : 'scale(1)' }}
               /> */}
-              <FaFileUpload style={{ transform: location.pathname  === '/upload' ? 'scale(1.6)' : 'scale(1)' }} />
+              <FaFileUpload style={{ transform: location.pathname  === '/videos/edit' ? 'scale(1.6)' : 'scale(1)' }} />
               Upload
             </NavLink>
           </li>
