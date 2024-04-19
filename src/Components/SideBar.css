@@ -41,7 +41,7 @@
   vertical-align: middle;
 }
 
-* Style for active link */
+/* Style for active link */
 .sidebar nav ul li a.active .sidebar-icon {  /* Increase the size of the icon for the active link */
   transform: scale(2); /* 20% larger */
 }
