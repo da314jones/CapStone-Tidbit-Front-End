@@ -17,7 +17,7 @@
   
   /* Form container styling */
   .form-container {
-    width: 80%; /* Adjust width as needed */
+    width: 50%; /* Adjust width as needed */
     padding: 20px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -40,6 +40,21 @@
   
   .video-summary{
     height: 150px;
+  }
+
+  .connect-session{
+    padding: 10px;
+    background-color: #000000;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 140px;
+  }
+
+  .connect-session:hover{
+    background-color: #0056b3;
   }
 
   /* Button styling */
