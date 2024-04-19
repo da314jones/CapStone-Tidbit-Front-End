@@ -126,7 +126,7 @@ export default function VideoManagement() {
   <div className="video-form-wrapper">
     <div className="video-container">
       {!isConnected ? (
-        <button onClick={startSession}>Connect Session</button>
+        <button className="connect-session" onClick={startSession}>Connect Session</button>
       ) : (
         <OTSession
           apiKey={apiKey}
@@ -147,7 +147,7 @@ export default function VideoManagement() {
         </OTSession>
       )}
     </div>
-    <div classname="form-container">
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input
           name="title"
