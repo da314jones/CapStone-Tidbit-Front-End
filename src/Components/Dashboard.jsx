@@ -79,6 +79,10 @@ export default function Dashboard() {
 
   return (
     <div className="main-container">
+      <video controls autoPlay muted>
+      <source src={selectedVideo} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => (
           <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
@@ -91,10 +95,6 @@ export default function Dashboard() {
           <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-      <video controls autoPlay muted>
-      <source src={selectedVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
     </div>
   );
 }
