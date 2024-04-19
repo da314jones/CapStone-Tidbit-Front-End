@@ -92,11 +92,9 @@ export default function Dashboard() {
       </div>
       {isModalOpen && selectedVideo && (
         <Modal onClose={handleCloseModal}>
-          <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} />
+          {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
         </Modal>
       )}
     </div>
   );
 }
-
-
