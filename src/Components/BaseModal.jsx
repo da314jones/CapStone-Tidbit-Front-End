@@ -1,14 +1,22 @@
-import React from 'react';
-import './Modal.css';
+import React from "react";
+import "./Modal.css";
 
-export default function BaseModal({ children, isOpen, onClose }) {
-    if (!isOpen) return null;
+export default function Modal({ show, onClose, children, title, selectedVideo }) {
+  
+  if (!show) {
+    return null;
+  }
 
   return (
-    <div className='modal-backdrop'>
-    <div className='modal-content'>
-        <button ocClick={onClose} className='"close-button'>X</button>
-        {children}
+    <div className="modal" id="modal">
+      <h2>{title || 'Default Modal Title'}</h2>
+      <div className="content">
+        {React.cloneElement(children, { selectedVideo })}
+      </div>
+      <div className="actions">
+        <button className="toggle-button" onClick={onClose}>
+          Close
+        </button>
       </div>
     </div>
   );

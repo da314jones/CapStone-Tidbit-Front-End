@@ -91,10 +91,6 @@ export default function Dashboard() {
           <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-      <video controls autoPlay muted>
-      <source src={selectedVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
     </div>
   );
 }
