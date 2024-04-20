@@ -11,6 +11,7 @@ import https from "https";
 import Video from "./Video";
 import Modal from './Modal';
 import "./Dashboard.css";
+import DashboardFilter from "./DashboardFilter.jsx";
 
 
 const API = import.meta.env.VITE_API_URL;
@@ -78,23 +79,28 @@ export default function Dashboard() {
   }
 
   return (
-    <div className="main-container">
-      <video controls autoPlay muted>
-      <source src={selectedVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-      <div className="videoList-container">
-        {thumbnails.map((thumbnail, index) => (
-          <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
-            <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
-          </div>
-        ))}
-      </div>
-      {isModalOpen && selectedVideo && (
-        <Modal onClose={handleCloseModal}>
-          {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
-        </Modal>
-      )}
-    </div>
+    // <div className="main-container">
+    //   <DashboardFilter/>
+    //   <video controls autoPlay muted>
+    //   <source src={selectedVideo} type="video/mp4" />
+    //   Your browser does not support the video tag.
+    // </video>
+    //   <div className="videoList-container">
+    //     {thumbnails.map((thumbnail, index) => (
+    //       <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
+    //         <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
+    //       </div>
+    //     ))}
+    //   </div>
+    //   {isModalOpen && selectedVideo && (
+    //     <Modal onClose={handleCloseModal}>
+    //       {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
+    //     </Modal>
+    //   )}
+
+    // </div>
+    <>
+    <DashboardFilter/>
+    </>
   );
 }
