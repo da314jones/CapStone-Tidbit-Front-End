@@ -43,6 +43,34 @@ export default function Dashboard() {
       });
   }, []);
 
+  // useEffect(async (thumbnailKey) => {
+  //   try {
+  //     const videoKey = thumbnailKey.replace('.png', '.mp4');
+  
+  //     const response = await fetch(`${API}/videos/signedVideoUrl`, {
+  //       method: 'POST',
+  //       headers: {
+  //         'Content-Type': 'application/json'
+  //       },
+  //       body: JSON.stringify({ videoKey }) 
+  //     });
+  //     if (!response.ok) {
+  //       throw new Error('Failed to fetch signed URL');
+  //     }
+  //     const data = await response.json();
+  //     console.log(data);
+     
+  //     console.log("Video key:", data.signedUrl)
+  //     console.log(data);
+
+  //     setSelectedVideo(data.signedUrl);
+  //     setIsModalOpen(true);
+  //     console.log(data);
+
+  //   } catch (error) {
+  //     console.error("Error fetching or signing URL:", error);
+  //   }
+  // }, [])
   const handleVideoClick = async (thumbnailKey) => {
     try {
       const videoKey = thumbnailKey.replace('.png', '.mp4');
@@ -79,28 +107,28 @@ console.log('apple')
   }
 
   return (
-    // <div className="main-container">
-    //   <DashboardFilter/>
-    //   <video controls autoPlay muted>
-    //   <source src={selectedVideo} type="video/mp4" />
-    //   Your browser does not support the video tag.
-    // </video>
-    //   <div className="videoList-container">
-    //     {thumbnails.map((thumbnail, index) => (
-    //       <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
-    //         <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
-    //       </div>
-    //     ))}
-    //   </div>
-    //   {isModalOpen && selectedVideo && (
-    //     <Modal onClose={handleCloseModal}>
-    //       {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
-    //     </Modal>
-    //   )}
+    <div className="main-container">
+      {/* <DashboardFilter/> */}
+      <video controls autoPlay muted>
+      <source src={selectedVideo} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+      <div className="videoList-container">
+        {thumbnails.map((thumbnail, index) => (
+          <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
+            <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
+          </div>
+        ))}
+      </div>
+      {isModalOpen && selectedVideo && (
+        <Modal onClose={handleCloseModal}>
+          {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
+        </Modal>
+      )}
 
-    // </div>
-    <>
-    <DashboardFilter/>
-    </>
+    </div>
+    // <>
+    // <DashboardFilter/>
+    // </>
   );
 }
