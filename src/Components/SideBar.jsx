@@ -21,7 +21,7 @@ export default function SideBar({ sidebar, setSidebar }) {
               &times;
             </span>: <></>}
           <p>Welcome, {user?.displayName}</p>
-            <input type='text' name='videoSearch' size="10" id='videoSearch' placeholder="search"></input>
+            <input type='text' name='videoSearch' size="10" id='videoSearch' placeholder="Search"></input>
             <ul>
             
               <li>
