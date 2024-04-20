@@ -1,48 +1,63 @@
-
-
-
-.home-page {
+/* .home-page {
   display: flex;
-}
+} */
 
 .home-page-details {
-  display: flex;
   color: black;
-  flex-direction: column;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
   text-align: left;
   padding-left: 15px;
+  margin-left: 15px;
 }
 
-.home-page-explain {
+/* .home-page-explain {
   font-family: "Lato", sans-serif;
   font-weight: 400;
   font-style: normal;
-}
+} */
 
 .go-to-grow {
-    display: flex;
-    flex-direction: column;
-    font-family: "Archivo", sans-serif;
-    font-optical-sizing: auto;
-    font-weight: 600;
-    font-style: normal;
-    font-variation-settings:
-      "wdth" 100;
+  display: flex;
+  flex-direction: column;
+  font-family: "Archivo", sans-serif;
+  /* font-optical-sizing: auto; */
+  font-weight: 700;
+  /* font-style: normal; */
+  /* font-variation-settings:"wdth" 100; */
   color: #0d08ba;
+  text-align: left;
 }
 
-.learner-music {
+/* .learner-music {
   max-width: 85%;
   height: auto;
   margin-left: 90px;
-}
+} */
 
 .grow {
   color: #e79efd;
 }
 
-.start-learning {
- background-color: #0d08ba;
+.home-page button {
+ background-color: #646cff;
  color: white;
+ width: 100%;
+ margin-top: 50px;
+ font-weight: 600;
+ font-size: larger;
+ text-transform: uppercase;
+}
+
+.home-page button:hover {
+  background-color: #f6f6f6;
+  color: black;
+  box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.home-page img {
+  border-radius: 25px;
+  width: 100vw;
+  height: 40vh;
 }

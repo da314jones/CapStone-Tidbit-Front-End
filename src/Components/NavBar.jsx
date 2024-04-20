@@ -21,7 +21,8 @@ export default function NavBar() {
 
   const handleSignOut = async () => {
     signOut();
-    setDropdown(false)
+    setDropdown(false);
+    navigate("/");
   };
 
   // const handleSignOut = async () => {
