@@ -126,8 +126,8 @@ export default function VideoManagement() {
       <div className="video-form-wrapper">
         <div className="video-container">
           {!isConnected ? (
-            <button className="connect-session" onClick={startSession}>
-              Connect Session
+            <button onClick={startSession}>
+              <img src="https://static.vecteezy.com/system/resources/previews/019/940/401/non_2x/recording-icon-on-transparent-background-free-png.png" /> <span className="button-text" >Start Recording Session</span>
             </button>
           ) : (
             <OTSession
@@ -153,7 +153,7 @@ export default function VideoManagement() {
                 className="video-button"
                 onClick={() => setIsConnected(false)}
               >
-                End Session
+                End Recording Session
               </button>
             </OTSession>
           )}
@@ -197,7 +197,7 @@ export default function VideoManagement() {
             ></textarea>
 
             <button className="form-button" type="submit">
-              Submit Video Info
+              Submit Video
             </button>
           </form>
         </div>
