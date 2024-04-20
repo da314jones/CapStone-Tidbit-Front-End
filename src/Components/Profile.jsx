@@ -9,7 +9,6 @@ export default function Profile() {
   const user = useContext(AuthContext);
   const [more, setMore] = useState(false);
   const [myVideos, setMyVideos] = useState([]);
-  console.log(user);
 
   useEffect(() => {
     const fetchVideos = async () => {
@@ -23,7 +22,6 @@ export default function Profile() {
     };
     fetchVideos();
   }, []);
-  console.log(myVideos);
 
   return (
     <>
@@ -54,7 +52,7 @@ export default function Profile() {
         <h2 className="text uploaded">Uploaded Tidbits</h2>
         <div className="profile-container">
           <div className="main-content">
-            <div className="tidbits">
+            {/* <div className="tidbits">
               {user ? (
                 <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
                   {[...Array(24)].map((_, index) => {
@@ -86,32 +84,60 @@ export default function Profile() {
                   Login to see your videos
                 </h1>
               )}
+            </div> */}
+            <div className="tidbits">
+              <h2 className="text-lg font-semibold mb-2">
+                Your Uploaded Tidbits
+              </h2>
+              {user ? (
+                myVideos.length > 0 ? (
+                  <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
+                    {myVideos
+                      .filter((video) => video.user_id === user.uid)
+                      .map((video, index) => {
+                        if (index % 2 === 0) {
+                          return (
+                            <div
+                              key={index}
+                              className="bg-white rounded-lg overflow-hidden shadow-lg"
+                            >
+                              <video
+                                width="300"
+                                height="200"
+                                controls
+                                className="w-full"
+                              >
+                                <source
+                                  src={video.signedUrl}
+                                  type="video/mp4"
+                                />
+                                Your browser does not support the video tag.
+                              </video>
+                              <div className="p-4">
+                                <div className="text-lg font-semibold mb-2">
+                                  <p className="text">{video.title}</p>
+                                </div>
+                                <div className="text-sm text-gray-600">
+                                  {video.summary}
+                                </div>
+                              </div>
+                            </div>
+                          );
+                        }
+                      })}
+                  </div>
+                ) : (
+                  <div>
+                    <h1 className="text-lg font-semibold mb-2">
+                      You don't have any videos uploaded
+                    </h1>
+                  </div>
+                )
+              ) : (
+                <h1>Login to see your videos</h1>
+              )}
             </div>
           </div>
-          {/* <div className="tidbits">
-               <h2>Your Uploaded Tidbits</h2>
-             {user ? (
-           user.uid === myVideos.user_id ? (
-         myVideos.map((video, index) => (
-          <div key={index} className="video-card">
-            <video width="1280" height="720" controls>
-              <source src={video.signedUrl} type="video/mp4" />
-              Your Browser does not support the video tag.
-            </video>
-            <div className="video-info"></div>
-            <div className="video-title"></div>
-            <div className="video-creator"></div>
-          </div>
-        ))
-      ) : (
-        <div>
-          <h1>You don't have any videos uploaded</h1>
-        </div>
-      )
-    ) : (
-      <h1>Login to see your videos</h1>
-    )}
-  </div> */}
         </div>
       </div>
     </>
