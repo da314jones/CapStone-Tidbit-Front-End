@@ -22,7 +22,7 @@ export default function SideBar({ sidebar, setSidebar }) {
             </span>: <></>}
             
             <ul>
-              <li><input type='text' name='videoSearch' size="10" id='videoSearch'></input></li>
+              <li><input type='text' name='videoSearch' size="10" id='videoSearch' placeholder="search"></input></li>
               <li>
                 <NavLink
                   to="/dashboard"

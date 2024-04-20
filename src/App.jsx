@@ -21,7 +21,7 @@ Dashboard;
 function App() {
   const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
   const [thumbnailReload, setthumbnailReload] = useState(false);
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   const theme = {
     colors: {
