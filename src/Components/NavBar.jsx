@@ -4,7 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 import { signInWithGoogle, signOut } from "../Services/firebase";
 import "./NavBar.css";
 
-export default function NavBar() {
+export default function NavBar({sidebar, setSidebar}) {
   const [dropDown, setDropdown] = useState(false);
   const user = useContext(AuthContext);
   const navigate = useNavigate();
@@ -67,6 +67,7 @@ export default function NavBar() {
   return (
     <div className="navbar-container">
       <Link to="/">
+        <div id='menu' onClick={()=>setSidebar(!sidebar)}>|||</div>
         <img
           className="brand-logo"
           src={"/tidbitLogo.png"}
