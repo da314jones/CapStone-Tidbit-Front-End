@@ -11,6 +11,7 @@ import https from "https";
 import Video from "./Video";
 import Modal from './Modal';
 import "./Dashboard.css";
+import DashboardFilter from "./DashboardFilter.jsx";
 
 
 const API = import.meta.env.VITE_API_URL;
@@ -71,13 +72,14 @@ console.log(selectedVideo)
     }
   };
   
-
+console.log('apple')
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
   }
 
   return (
+
     <div className="main-container">
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => (
@@ -94,5 +96,8 @@ console.log(selectedVideo)
           </div>
   );
 }
-
-
+    <>
+    <DashboardFilter/>
+    </>
+  );
+}

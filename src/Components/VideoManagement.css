@@ -1,45 +1,123 @@
 .session-wrapper {
     display: flex;
+    flex-direction: column;
+    align-items: center;
     justify-content: center;
+    margin-left:80px;
+    width: 60vw;
   }
   
   .video-form-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    width: 100%;
   }
   
   .video-container {
-    width: 80%; /* Adjust width as needed */
+    /* width: 80%; Adjust width as needed */
     text-align: center;
-    margin-top: 60px;
+    margin: 60px;
+  }
+
+  .video-container img{
+    width: 50px;
+  }
+
+  .form-container{
+    width: 100%;
+   
   }
   
   /* Form container styling */
-  .form-container {
-    width: 80%; /* Adjust width as needed */
-    padding: 20px;
-    background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    border-radius: 8px;
-    margin-top: 30px; /* Adjust margin from the top */
-    margin-left: 140px;
-  }
-  
-  /* Input field styling */
-  input,
-  select,
-  textarea {
+  .form-container form{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     width: 100%;
-    padding: 10px;
-    margin-bottom: 15px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    font-size: 16px;
+    margin: 5px;
+    padding: 50px;
+    gap: 15px;
+    background-color: #aa8bb7;
+    /* width: 50%; Adjust width as needed */
+    /* padding: 20px; */
+    /* background-color: #fff; */
+    /* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); */
+    /* border-radius: 8px; */
+    /* margin-top: 30px; Adjust margin from the top */
+    /* margin-left: 140px; */
   }
   
-  .video-summary{
+  /* Input field styling */ 
+  .form-container input{
+    background-color: white;
+    width: 100%;
+    color: black;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+  }
+
+  .form-container select{
+    background-color: white;
+    width: 100%;
+    color: black;
+    margin: 5px;
+    padding: 10px;
+    border-radius: 5px;
+  }
+
+  .form-container textarea{
+    width: 100%;
     height: 150px;
+    background-color: white;
+    margin: 5px;
+    padding: 5px;
+    border-radius: 5px;
+    color: black;
+  }
+  
+  /* input
+  select,
+  textarea { */
+    /* width: 100%; */
+    /* margin: 5px; */
+    /* padding: 10px; */
+    /* margin-bottom: 15px; */
+    /* border: 1px solid #ccc; */
+    /* border-radius: 5px; */
+    /* font-size: 16px; */
+  /* } */
+  
+  /* .video-summary{
+    height: 150px;
+  } */
+
+  .connect-session{
+    display: flex;
+    /* padding: 10px; */
+    /* color: black; */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    /* margin-left: 140px; */
+    
+  }
+
+  .video-container button{
+    color: white;
+    background-color: #646cff;
+    font-size: 16px;
+    font-weight: 700;
+    display: flex;
+    border: none;
+  }
+
+  .video-container button:hover{
+    background-color: #f6f6f6;
+    color: black;
   }
 
   /* Button styling */
@@ -60,8 +138,11 @@
   }
 
   .form-button {
+    width: 70%;
     padding: 10px;
-    background-color: #000000;
+    background-color: #646cff;
+    font-weight: 700;
+    /* background-color: #000000; */
     color: #fff;
     border: none;
     border-radius: 5px;
@@ -70,5 +151,7 @@
   }
 
   .form-button:hover {
-    background-color: #0056b3;
+    /* background-color: #0056b3; */
+    background-color: #f6f6f6;
+    color: black;
   }

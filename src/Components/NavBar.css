@@ -9,22 +9,35 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 0 5px rgba(254, 254, 254, 0.1);
-  z-index: 1000;
+  /* z-index: 1000; */
   /* border: 3px solid green; */
   /* background-color: blue; */
-  margin-bottom: 20px;
-  margin: 15px 0;
+  /* margin-bottom: 20px; */
+  /* margin: 15px 0; */
 }
 
 .brand-logo {
   display: flex;
-  height: 60%;
-  width: 150px;
-  align-items: center;
-  margin-left: 25px;
+  /* height: 60%; */
+  width: 200px;
+  /* align-items: center; */
+  /* margin-left: 25px; */
   /* border: 3px solid red; */
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 5px;
+  margin-top: 20px;
+  /* padding-bottom: 10px; */
+  padding-left: 2vw;
+  margin-bottom: 30px;
+
+  /* height: 60%; */
+  /* width: 180px; */
+  /* align-items: center; */
+  /* margin-left: 25px; */
+  /* border: 3px solid red; */
+  /* padding-top: 10px; */
+  /* padding-bottom: 10px; */
+  /* padding-left: 5vw; */
+
 }
 
 .profile-menu {
@@ -33,32 +46,55 @@
   align-items: center;
   height: 100%;
 }
+.profile-menu button{
+  background-color: #646cff;
+  margin-right: 15px;
+  margin-top: 5px;
+}
+
+.profile-menu button:hover{
+  background-color: #f6f6f6;
+  color: black;
+}
 
 .profile-menu img {
   height: 100%;
-  margin-left: 105px;
+  /* margin-left: 105px; */
   /* border: 3px solid red; */
-  margin-right: 40px;
+  margin-right: 45px;
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  margin-top: 10px;
+}
+
+.button-text{
+  margin-left: 10px;
+  margin-top: 3px;
 }
 
 .dropdown {
   position: absolute;
   top: 60px;
-  right: 20px;
-  background: white;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  border: 1px solid #ccc;
-  border-radius: 4px;
-  width: 150px;
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+  right: 5px;
+  margin: 5px;
+  /* background: white; */
+  /* list-style: none; */
+  /* padding: 0; */
+  /* margin: 0; */
+  /* border: 1px solid #ccc; */
+  /* border-radius: 4px; */
+  /* width: 150px; */
+  /* box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); */
+  /* padding: 8px 12px; */
+  cursor: pointer;
 }
 
-.dropdown li {
+/* .dropdown:hover{
+  background-color: #f6f6f6;
+} */
+
+/* .dropdown li {
   padding: 8px 12px;
   cursor: pointer;
 }
@@ -71,4 +107,4 @@
   text-decoration: none;
   color: black;
   display: block;
-}
+} */
