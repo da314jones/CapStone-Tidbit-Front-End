@@ -147,7 +147,7 @@ export default function VideoManagement() {
         </OTSession>
       )}
     </div>
-    <div classname="form-container">
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input
           name="title"
