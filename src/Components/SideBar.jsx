@@ -11,7 +11,7 @@ import { MdCreateNewFolder } from "react-icons/md";
 export default function SideBar({ sidebar, setSidebar }) {
   const location = useLocation();
   const user = useContext(AuthContext);
-
+  
   return (
     <div className="sidebar">
       {user?.uid && (
@@ -20,9 +20,10 @@ export default function SideBar({ sidebar, setSidebar }) {
             {false ? <span id="exit" onClick={() => setSidebar(false)}>
               &times;
             </span>: <></>}
-            
+          <p>Welcome, {user?.displayName}</p>
+            <input type='text' name='videoSearch' size="10" id='videoSearch' placeholder="search"></input>
             <ul>
-              <li><input type='text' name='videoSearch' size="10" id='videoSearch' placeholder="search"></input></li>
+            
               <li>
                 <NavLink
                   to="/dashboard"
