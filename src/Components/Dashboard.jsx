@@ -29,7 +29,7 @@ export default function Dashboard() {
   const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+console.log(selectedVideo)
 
   useEffect(() => {
     fetch(`${API}/videos/index-thumbnails`)
@@ -88,14 +88,10 @@ export default function Dashboard() {
       </div>
       {isModalOpen && selectedVideo && (
         <Modal onClose={handleCloseModal}>
-          <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} />
+          <Video key={selectedVideo} videoSrc={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-      <video controls autoPlay muted>
-      <source src={selectedVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
-    </div>
+          </div>
   );
 }
 
