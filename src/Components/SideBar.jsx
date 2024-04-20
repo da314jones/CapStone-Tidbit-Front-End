@@ -1,6 +1,7 @@
 // SideBar.jsx
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink, useLocation } from "react-router-dom";
+import { AuthContext } from "../Providers/AuthProvider";
 import "./SideBar.css";
 import { FaFileUpload } from "react-icons/fa";
 import { RxDashboard } from "react-icons/rx";
@@ -9,10 +10,12 @@ import { MdCreateNewFolder } from "react-icons/md";
 
 export default function SideBar() {
   const location = useLocation();
+  const user = useContext(AuthContext);
 
   return (
+    
     <div className="sidebar">
-      <nav>
+      {user?.uid && <nav>
         <ul>
           <li>
             <NavLink
@@ -79,7 +82,7 @@ export default function SideBar() {
             </NavLink>
           </li>
         </ul>
-      </nav>
+      </nav>}
     </div>
   );
 }
