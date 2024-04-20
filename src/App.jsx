@@ -21,7 +21,7 @@ Dashboard;
 function App() {
   const [isQuestionnaireOpen, setIsQuestionnaireOpen] = useState(false);
   const [thumbnailReload, setthumbnailReload] = useState(false);
-  const [sidebar, setSidebar] = useState(false);
+  const [sidebar, setSidebar] = useState(true);
 
   const theme = {
     colors: {
@@ -61,7 +61,7 @@ function App() {
               <div className="side-routes">
               <SideBar sidebar={sidebar} setSidebar={setSidebar}/>
               <Routes>
-                <Route path="/" element={<Home />} />
+                <Route path="/" element={<Home setSidebar={setSidebar}/>} />
                 <Route path="/session" element={<New />} />
                 <Route path="/profile" element={<Profile />} />
                 <Route path="/dashboard" element={<Index />} />

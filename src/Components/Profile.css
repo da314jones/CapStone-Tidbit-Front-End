@@ -1,6 +1,7 @@
 .profile-page {
   /* display: flex;
   flex-direction: row; */
+  color: black;
 
   margin-top: 50px;
   padding-top: 10px;
@@ -22,7 +23,10 @@
   border-radius: 15px;
   padding: 20px;
   padding-bottom: 30px;
-  margin-right: 20px;
+  /* margin-left: 20px; */
+  /* height: 600px; */
+  /* width: 300px; */
+  /* margin-right: 20px; */
 }
 
 .profile-container {
@@ -32,10 +36,10 @@
   overflow: auto;
 }
 
-.uploaded{
+/* .uploaded{
   font-size: 25px;
   text-align: left;
-}
+} */
 
 .text_profile-details {
   display: flex;
@@ -78,9 +82,9 @@
   text-align: center;
 }
 
-.profile-details .text {
+/* .profile-details .text {
   color: black;
-}
+} */
 
 .uploaded {
   margin-top: 40px;
@@ -92,7 +96,7 @@
 /* .main-content {
   display: flex; 
   flex-direction: column;
-} */
+}
 
 /* .tidbits {
   display: flex;
@@ -134,10 +138,29 @@
   cursor: pointer;
 }
 
-.text {
+/* .text {
   color: black;
   font-family: Arial, Helvetica, sans-serif;
+} */
+
+.text_uploaded{
+  margin-top: 30px;
 }
+
+.no_uploads{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  width: 50vw;
+  margin-left: 200px;
+  
+}
+
+.no_uploads img{
+  width: 150px;
+}
+
 
 /* Media Queries */
 /* @media screen and (max-width: 844px) {

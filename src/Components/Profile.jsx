@@ -66,9 +66,9 @@ export default function Profile() {
         <div className="profile-container">
           <div className="main-content">
             <div className="tidbits">
-              <h2 className="text-lg font-semibold mb-2">
+              {/* <h2 className="text-lg font-semibold mb-2">
                 Your Uploaded Tidbits
-              </h2>
+              </h2> */}
               {user ? (
                 myVideos.length > 0 ? (
                   <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
@@ -117,14 +117,18 @@ export default function Profile() {
                       })}
                   </div>
                 ) : (
-                  <div>
-                    <h1 className="text-lg font-semibold mb-2">
-                      You don't have any videos uploaded
-                    </h1>
-                  </div>
+                  <div className="no_uploads">
+                  <img src="https://cdn-icons-png.flaticon.com/512/2748/2748558.png" />
+                  <h2
+                  // className="text-lg font-semibold mb-2"
+                  >
+                    You don't have any videos uploaded
+                  </h2>
+                </div>
                 )
               ) : (
-                <h1>Login to see your videos</h1>
+               
+                  <h1>Login to see your videos</h1>
               )}
             </div>
           </div>
