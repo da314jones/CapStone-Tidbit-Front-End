@@ -66,12 +66,18 @@ export default function NavBar({sidebar, setSidebar}) {
 
   return (
     <div className="navbar-container">
-      <Link to={user ? "/dashboard" : "/"}>
+
+        {/* <Link to={user ? "/dashboard" : "/"}> */}
         {/* <div id='menu' onClick={()=>setSidebar(!sidebar)}>|||</div> */}
+
+      <Link to="/">
+        {false && <div id='menu' onClick={()=>setSidebar(!sidebar)}>|||</div>}
+
         <img
           className="brand-logo"
           src={"/tidbitLogo.png"}
           alt="Tidbits Brand Logo"
+          onClick={()=>{setSidebar(false)}}
         />
       </Link>
       {renderContent()}

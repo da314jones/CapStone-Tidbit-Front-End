@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import './DashboardFilter.css'
 
 const DashboardFilter = () => {
   const imageFiltering = {
@@ -12,13 +13,12 @@ const DashboardFilter = () => {
 
   return (
     <div>
-      <div className="max-w-lg p-4 shadow-md dark:bg-gray-900 dark:text-gray-100">
-        <div className="flex justify-between pb-4 border-bottom">
-          <div className="flex items-center">
+      <div className='mainFilter'>
+        <div>
+          <div>
             <a
               rel="noopener noreferrer"
               href="#"
-              className="mb-0 capitalize dark:text-gray-100"
             >
               Photography
             </a>
@@ -27,24 +27,23 @@ const DashboardFilter = () => {
             See All
           </a>
         </div>
-        <div className="space-y-4">
-          <div className="space-y-2">
+        <div>
+          <div>
             <img
               src={imageFiltering["Cooking"]}
               alt=""
-              className="block object-cover object-center w-full rounded-md h-72 dark:bg-gray-500"
             />
-            <div className="flex items-center text-xs">
+            <div>
               <span>6 min ago</span>
             </div>
           </div>
           <div className="space-y-2">
             <a rel="noopener noreferrer" href="#" className="block">
-              <h3 className="text-xl font-semibold dark:text-violet-400">
+              <h3>
                 Facere ipsa nulla corrupti praesentium pariatur architecto
               </h3>
             </a>
-            <p className="leadi dark:text-gray-400">
+            <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Repellat, excepturi. Lorem ipsum dolor sit amet consectetur,
               adipisicing elit. Repellat, excepturi.
@@ -52,7 +51,8 @@ const DashboardFilter = () => {
           </div>
         </div>
       </div>
-      <div className="max-w-lg p-4 shadow-md dark:bg-gray-900 dark:text-gray-100">
+
+      <div>
         <div className="flex justify-between pb-4 border-bottom">
           <div className="flex items-center">
             <a
