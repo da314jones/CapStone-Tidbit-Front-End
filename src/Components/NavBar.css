@@ -9,23 +9,23 @@
   align-items: center;
   justify-content: space-between;
   box-shadow: 2px 0 5px rgba(254, 254, 254, 0.1);
-  z-index: 1000;
+  /* z-index: 1000; */
   /* border: 3px solid green; */
   /* background-color: blue; */
-  margin-bottom: 20px;
-  margin: 15px 0;
+  /* margin-bottom: 20px; */
+  /* margin: 15px 0; */
 }
 
 .brand-logo {
   display: flex;
-  height: 60%;
-  width: 30vh;
-  align-items: center;
-  margin-left: 25px;
+  /* height: 60%; */
+  width: 165px;
+  /* align-items: center; */
+  /* margin-left: 25px; */
   /* border: 3px solid red; */
-  padding-top: 10px;
-  padding-bottom: 10px;
-  padding-left: 5vw;
+  padding-top: 5px;
+  /* padding-bottom: 10px; */
+  padding-left: 2vw;
 }
 
 .profile-menu {
@@ -37,6 +37,7 @@
 .profile-menu button{
   background-color: #646cff;
   margin-right: 15px;
+  margin-top: 5px;
 }
 
 .profile-menu button:hover{
@@ -52,6 +53,7 @@
   border-radius: 50%;
   object-fit: cover;
   cursor: pointer;
+  margin-top: 10px;
 }
 
 .dropdown {

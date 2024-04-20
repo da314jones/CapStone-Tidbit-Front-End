@@ -66,8 +66,8 @@ export default function NavBar({sidebar, setSidebar}) {
 
   return (
     <div className="navbar-container">
-      <Link to="/">
-        <div id='menu' onClick={()=>setSidebar(!sidebar)}>|||</div>
+      <Link to={user ? "/dashboard" : "/"}>
+        {/* <div id='menu' onClick={()=>setSidebar(!sidebar)}>|||</div> */}
         <img
           className="brand-logo"
           src={"/tidbitLogo.png"}
