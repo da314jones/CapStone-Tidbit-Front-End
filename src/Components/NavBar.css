@@ -19,13 +19,15 @@
 .brand-logo {
   display: flex;
   /* height: 60%; */
-  width: 165px;
+  width: 200px;
   /* align-items: center; */
   /* margin-left: 25px; */
   /* border: 3px solid red; */
   padding-top: 5px;
+  margin-top: 20px;
   /* padding-bottom: 10px; */
   padding-left: 2vw;
+  margin-bottom: 30px;
 }
 
 .profile-menu {
