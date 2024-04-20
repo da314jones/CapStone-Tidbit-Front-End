@@ -30,7 +30,7 @@ export default function Dashboard() {
   const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
-
+console.log(selectedVideo)
 
   useEffect(() => {
     fetch(`${API}/videos/index-thumbnails`)
@@ -79,26 +79,23 @@ console.log('apple')
   }
 
   return (
-    // <div className="main-container">
-    //   <DashboardFilter/>
-    //   <video controls autoPlay muted>
-    //   <source src={selectedVideo} type="video/mp4" />
-    //   Your browser does not support the video tag.
-    // </video>
-    //   <div className="videoList-container">
-    //     {thumbnails.map((thumbnail, index) => (
-    //       <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
-    //         <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
-    //       </div>
-    //     ))}
-    //   </div>
-    //   {isModalOpen && selectedVideo && (
-    //     <Modal onClose={handleCloseModal}>
-    //       {/* <Video videoSrc={selectedVideo} selectedVideo={selectedVideo} onClose={handleCloseModal} /> */}
-    //     </Modal>
-    //   )}
 
-    // </div>
+    <div className="main-container">
+      <div className="videoList-container">
+        {thumbnails.map((thumbnail, index) => (
+          <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
+            <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
+          </div>
+        ))}
+      </div>
+      {isModalOpen && selectedVideo && (
+        <Modal onClose={handleCloseModal}>
+          <Video key={selectedVideo} videoSrc={selectedVideo} onClose={handleCloseModal} />
+        </Modal>
+      )}
+          </div>
+  );
+}
     <>
     <DashboardFilter/>
     </>

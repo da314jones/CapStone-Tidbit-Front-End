@@ -157,44 +157,78 @@ export default function VideoManagement() {
               </button>
             </OTSession>
           )}
-        </div>
-        <div className="form-container">
-          <form onSubmit={handleSubmit}>
-            <input
-              name="title"
-              value={videoMeta.title}
-              onChange={handleTextChange}
-              placeholder="Title"
-              required
-            />
-            <select
-              name="category"
-              value={videoMeta.category}
-              onChange={handleTextChange}
-              required
-            >
-              <option value="">Select Category</option>
-              <option value="wood-work">Wood Work</option>
-              <option value="tech">Tech</option>
-              <option value="fried-cooking">Fried Cooking</option>
-              <option value="hunting">Hunting</option>
-              <option value="painting">Painting</option>
-              <option value="astrology">Astrology</option>
-              <option value="gardening">Gardening</option>
-              <option value="pastries">Pastries</option>
-              <option value="latin-dance">Latin Dance</option>
-              <option value="literature">Literature</option>
-              <option value="gaming">Gaming</option>
-              <option value="economics">Ecomonomics</option>
-            </select>
-            <textarea
-              className="video-summary"
-              name="summary"
-              value={videoMeta.summary}
-              onChange={handleTextChange}
-              placeholder="Summary"
-              required
-            ></textarea>
+          <button className="video-button" onClick={() => setIsConnected(false)}>End Session</button>
+        </OTSession>
+      )}
+    </div>
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <input
+          name="title"
+          value={videoMeta.title}
+          onChange={handleTextChange}
+          placeholder="Title"
+          required
+        />
+        <select
+          name="category"
+          value={videoMeta.category}
+          onChange={handleTextChange}
+          required
+        >
+          <option value="">Select Category</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Tech">Tech</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Art">Art</option>
+        </select>
+        <textarea
+        className="video-summary"
+          name="summary"
+          value={videoMeta.summary}
+          onChange={handleTextChange}
+          placeholder="Summary"
+          required
+        ></textarea>
+
+//         </div>
+//         <div className="form-container">
+//           <form onSubmit={handleSubmit}>
+//             <input
+//               name="title"
+//               value={videoMeta.title}
+//               onChange={handleTextChange}
+//               placeholder="Title"
+//               required
+//             />
+//             <select
+//               name="category"
+//               value={videoMeta.category}
+//               onChange={handleTextChange}
+//               required
+//             >
+//               <option value="">Select Category</option>
+//               <option value="wood-work">Wood Work</option>
+//               <option value="tech">Tech</option>
+//               <option value="fried-cooking">Fried Cooking</option>
+//               <option value="hunting">Hunting</option>
+//               <option value="painting">Painting</option>
+//               <option value="astrology">Astrology</option>
+//               <option value="gardening">Gardening</option>
+//               <option value="pastries">Pastries</option>
+//               <option value="latin-dance">Latin Dance</option>
+//               <option value="literature">Literature</option>
+//               <option value="gaming">Gaming</option>
+//               <option value="economics">Ecomonomics</option>
+//             </select>
+//             <textarea
+//               className="video-summary"
+//               name="summary"
+//               value={videoMeta.summary}
+//               onChange={handleTextChange}
+//               placeholder="Summary"
+//               required
+//             ></textarea>
 
             <button className="form-button" type="submit">
               Submit Video
