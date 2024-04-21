@@ -24,6 +24,7 @@ console.log(selectedVideo)
   }, []);
 
   const handleVideoClick = useCallback(async (thumbnailKey) => {
+
     try {
       const videoKey = thumbnailKey.replace('.png', '.mp4');
       const response = await fetch(`${API}/videos/signedVideoUrl`, {
@@ -38,6 +39,7 @@ console.log(selectedVideo)
       }
       const data = await response.json();
       console.log("Video key:", data.signedUrl)
+
       setSelectedVideo(data.signedUrl);
       setIsModalOpen(true);
       console.log(data);
@@ -53,7 +55,7 @@ console.log(selectedVideo)
 
   return (
     <div className="main-container">
-      <DashboardFilter />
+     
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => {
           const key = `${thumbnail.thumbnail_key}-${index}`;
@@ -64,12 +66,14 @@ console.log(selectedVideo)
             </div>
           );
         })}
+
       </div>
       {isModalOpen && selectedVideo && (
         <Modal show={isModalOpen} onClose={handleCloseModal}>
           <Video videoSrc={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
+       <DashboardFilter />
     </div>
   );
   

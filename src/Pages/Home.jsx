@@ -27,16 +27,13 @@ export default function Home({setSidebar}) {
             src="/Designer.png" />
           </div>
           <div className="home-page-details">
-            <h1 className="go-to-grow">Where Those Who Know Go to<span className="grow">Grow</span></h1>
-            <br></br>
-            <br></br>
+            <h1 className="go-to-grow">Where Those Who Know <br />Go to <span className="grow">Grow</span></h1>
             <p className="home-page-explain text-lg text-neutral-100">
               Our community addresses this need of bridging the gap by
               demystifying complex concepts and offering straightforward guides,
               making knowledge easily accessible across various subjects.
             </p>
-          </div>
-        </div>
+            <div className="button-div">
             <button
               type="button"
               onClick={ () => { user ? userNavigation() : signInWithGoogle() }}
@@ -46,6 +43,9 @@ export default function Home({setSidebar}) {
             >
               Start Learning
             </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

@@ -1,4 +1,3 @@
-// Profile.jsx -
 import React, { useContext, useState, useEffect } from "react";
 import "./Profile.css";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -7,7 +6,7 @@ const API = import.meta.env.VITE_API_URL;
 
 export default function Profile() {
   const user = useContext(AuthContext);
-  const [more, setMore] = useState(false);
+  const [userThumbnails, setUserThumbnails] = useState([]);
   const [myVideos, setMyVideos] = useState([]);
 
   useEffect(() => {
@@ -23,6 +22,17 @@ export default function Profile() {
     fetchVideos();
   }, []);
 
+  useEffect(() => {
+    fetch(`${API}/videos/index-thumbnails`)
+      .then((response) => response.json())
+      .then((data) => {
+        setUserThumbnails(data.thumbnailImage);
+      })
+      .catch((error) => {
+        console.error("Error fetching data:", error);
+      });
+  }, []);
+
   return (
     <>
       <div className="profile-page">
@@ -34,6 +44,7 @@ export default function Profile() {
               <img src="profile-picture.jpg" alt="Profile" />
             )}
           </div>
+          {/* Profile Details */}
           <div className="text_profile-details">
             <div className="text profile-name">
               {user ? (
@@ -49,42 +60,11 @@ export default function Profile() {
             <button className="editbutton">Edit Profile</button>
           </div>
         </div>
-        <h1 className="text_uploaded">Uploaded Tidbits</h1>
+
+        {/* Uploaded Tidbits Section */}
+        <h2 className="text uploaded">Uploaded Tidbits</h2>
         <div className="profile-container">
           <div className="main-content">
-            {/* <div className="tidbits">
-              {user ? (
-                <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-4 xl:gap-x-8">
-                  {[...Array(24)].map((_, index) => {
-                    if (index <= 7) {
-                      return (
-                        <div
-                          key={index}
-                          className="bg-white rounded-lg overflow-hidden shadow-lg"
-                        >
-                          <video width="300" controls>
-                            <source src="dummy_video.mp4" type="video/mp4" />
-                            Your Browser does not support the video tag.
-                          </video>
-                          <div className="p-4">
-                            <div className="text-lg font-semibold mb-2">
-                              Dummy Video Title
-                            </div>
-                            <div className="text-sm text-gray-600">
-                              Dummy Video Creator
-                            </div>
-                          </div>
-                        </div>
-                      );
-                    }
-                  })}
-                </div>
-              ) : (
-                <h1 className="text-lg font-semibold mb-2">
-                  Login to see your videos
-                </h1>
-              )}
-            </div> */}
             <div className="tidbits">
               {/* <h2 className="text-lg font-semibold mb-2">
                 Your Uploaded Tidbits
@@ -95,17 +75,27 @@ export default function Profile() {
                     {myVideos
                       .filter((video) => video.user_id === user.uid)
                       .map((video, index) => {
-                        if (index % 2 === 0) {
+                        const matchingThumbnail = userThumbnails.find(
+                          (thumbnail) => thumbnail.thumbnail_key === video.thumbnail_key
+                        );
+
+                        if (index % 2 === 0 && matchingThumbnail) {
                           return (
                             <div
                               key={index}
                               className="bg-white rounded-lg overflow-hidden shadow-lg"
                             >
+                              {/* <img
+                                src={matchingThumbnail.thumbnailUrl}
+                                alt="Video Thumbnail"
+                                className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500"
+                              /> */}
+
                               <video
                                 width="300"
-                                height="200"
-                                controls
-                                className="w-full"
+                                min-height="200"
+                                controls poster={matchingThumbnail.thumbnailUrl}
+                                className="object-cover object-center w-full rounded-t-md h-72 dark:bg-gray-500"
                               >
                                 <source
                                   src={video.signedUrl}

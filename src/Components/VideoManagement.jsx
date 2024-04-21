@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
-import "./VideoManagement.css";
+import "./VideoManagement.css"
 
 const API = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
@@ -11,6 +11,7 @@ export default function VideoManagement() {
   const [otSdkReady, setOtSdkReady] = useState(false);
   const [isConnected, setIsConnected] = useState(false);
   const [isRecording, setIsRecording] = useState(false);
+  const [submit, setSubmit] = useState(false);
   const [archiveId, setArchiveId] = useState(null);
   const [videoMeta, setVideoMeta] = useState({
     category: "",
@@ -92,6 +93,7 @@ export default function VideoManagement() {
       }
       const data = await response.json();
       setIsRecording(false);
+      setSubmit(true)
       console.log("Recording stopped for Archive ID:", archiveId);
     } catch (error) {
       console.error("Failed to stop recording:", error.message);
@@ -123,41 +125,66 @@ export default function VideoManagement() {
 
   return (
     <div className="session-wrapper">
-      <div className="video-form-wrapper">
-        {!isConnected ? (
-          <button onClick={startSession}>
-            <img src="https://static.vecteezy.com/system/resources/previews/019/940/401/non_2x/recording-icon-on-transparent-background-free-png.png" alt="Start Recording"/>
-            <span className="button-text">Start Recording Session</span>
-          </button>
-        ) : (
-          <OTSession apiKey={apiKey} sessionId={sessionId} token={token} onError={(error) => console.error(error)}>
-            <OTPublisher properties={{ width: 800, height: 500 }} />
-            <OTStreams>
-              <OTSubscriber />
-            </OTStreams>
-            {!isRecording ? (
-              <button className="video-button" onClick={startRecording}>Start Recording</button>
-            ) : (
-              <button className="video-button" onClick={stopRecording}>Stop Recording</button>
-            )}
-            <button className="video-button" onClick={() => setIsConnected(false)}>End Session</button>
-          </OTSession>
-        )}
-      </div>
-      <div className="form-container">
-        <form onSubmit={handleSubmit}>
-          <input name="title" value={videoMeta.title} onChange={handleTextChange} placeholder="Title" required />
-          <select name="category" value={videoMeta.category} onChange={handleTextChange} required>
-            <option value="">Select Category</option>
-            <option value="Cooking">Cooking</option>
-            <option value="Tech">Tech</option>
-            <option value="Gaming">Gaming</option>
-            <option value="Art">Art</option>
-          </select>
-          <textarea className="video-summary" name="summary" value={videoMeta.summary} onChange={handleTextChange} placeholder="Summary" required />
-          <button className="form-button" type="submit">Submit Video</button>
-        </form>
-      </div>
+
+  <div className="video-form-wrapper">
+    <div className="form-container">
+      <form onSubmit={handleSubmit}>
+        <input
+          name="title"
+          value={videoMeta.title}
+          onChange={handleTextChange}
+          placeholder="Title"
+          required
+        />
+        <select
+          name="category"
+          value={videoMeta.category}
+          onChange={handleTextChange}
+          required
+        >
+          <option value="">Select Category</option>
+          <option value="Cooking">Cooking</option>
+          <option value="Tech">Tech</option>
+          <option value="Gaming">Gaming</option>
+          <option value="Art">Art</option>
+        </select>
+        <textarea
+        className="video-summary"
+          name="summary"
+          value={videoMeta.summary}
+          onChange={handleTextChange}
+          placeholder="Summary"
+          required
+        ></textarea>
+    <div className="video-container">
+      {!isConnected ? (
+        <button onClick={startSession}>Connect Session</button>
+      ) : (
+        <OTSession
+          apiKey={apiKey}
+          sessionId={sessionId}
+          token={token}
+          onError={(error) => console.error(error)}
+        >
+          <OTPublisher properties={{ width: 800, height: 500 }} />
+          <OTStreams>
+            <OTSubscriber />
+          </OTStreams>
+          {!isRecording ? (
+            <button className="video-button" onClick={startRecording}>Start Recording</button>
+          ) : (
+            <button className="video-button" onClick={stopRecording}>Stop Recording</button>
+          )}
+          <button className="video-button" onClick={() => setIsConnected(false)}>End Session</button>
+        </OTSession>
+      )}
     </div>
+
+       { submit && <button className="form-button" type="submit" >Submit Video Info</button>}
+      </form>
+    </div>
+  </div>
+</div>
+
   );
 }
