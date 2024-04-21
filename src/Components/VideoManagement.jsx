@@ -125,6 +125,7 @@ export default function VideoManagement() {
 
   return (
     <div className="session-wrapper">
+
   <div className="video-form-wrapper">
     <div className="form-container">
       <form onSubmit={handleSubmit}>
