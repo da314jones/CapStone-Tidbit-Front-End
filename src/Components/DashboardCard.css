@@ -1,0 +1,10 @@
+.DashboardCard{
+    width: 30vw;
+}
+.DashboardCard img{
+    border-radius: 10px ;
+    box-shadow: 5px 8px rgb(187, 185, 185);
+    height: 20rem;
+    width: 22rem;
+    padding-top: 20px;
+}

@@ -1,41 +1,32 @@
-import React, { useEffect, useState } from "react";
-import {
-  S3Client,
-  ListObjectsV2Command,
-  GetObjectCommand,
-  HeadObjectCommand,
-  PutObjectCommand
-} from "@aws-sdk/client-s3";
-import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
-import https from "https";
-import Video from "./Video";
+import React, { useEffect, useState, useCallback } from "react";
 import Modal from './Modal';
+import Video from "./Video";
+import DashboardFilter from "./DashboardFilter";
 import "./Dashboard.css";
+
 const API = import.meta.env.VITE_API_URL;
-const s3Client = new S3Client({
-  region: import.meta.env.VITE_AWS_REGION,
-  credentials: {
-    accessKeyId: import.meta.env.VITE_AWS_ACCESS_KEY_ID,
-    secretAccessKey: import.meta.env.AWS_AWS_SECRET_ACCESS_KEY,
-  },
-});
-const BUCKET_NAME = import.meta.env.VITE_BUCKET_NAME
+
 export default function Dashboard() {
   const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filter, setFilter] = useState('')
+
 console.log(selectedVideo)
   useEffect(() => {
     fetch(`${API}/videos/index-thumbnails`)
       .then((response) => response.json())
       .then((data) => {
-        setThumbnails(data.thumbnailImage);
-      })
+        const uniqueThumbnails = Array.from(new Map(data.thumbnailImage.map(item => [`${item.user_id}-${item.category}-${item.created_at}`, item])).values());
+        console.log("Unique filtered thumbnails:", uniqueThumbnails);
+        setThumbnails(uniqueThumbnails);      })
       .catch((error) => {
         console.error("Error fetching data:", error);
       });
   }, []);
-  const handleVideoClick = async (thumbnailKey) => {
+
+  const handleVideoClick = useCallback(async (thumbnailKey) => {
+
     try {
       const videoKey = thumbnailKey.replace('.png', '.mp4');
       const response = await fetch(`${API}/videos/signedVideoUrl`, {
@@ -49,38 +40,46 @@ console.log(selectedVideo)
         throw new Error('Failed to fetch signed URL');
       }
       const data = await response.json();
-      console.log(data);
       console.log("Video key:", data.signedUrl)
-      console.log(data);
+
       setSelectedVideo(data.signedUrl);
       setIsModalOpen(true);
       console.log(data);
     } catch (error) {
       console.error("Error fetching or signing URL:", error);
     }
-  };
+  }, []);
+
   const handleCloseModal = () => {
     setIsModalOpen(false);
     setSelectedVideo(null);
-  }
+  };
+
   return (
     <div className="main-container">
+
+
+      {filter && <>       
       <div className="videoList-container">
-        {thumbnails.map((thumbnail, index) => (
-          <div key={index} className="video-card " onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
-            <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
-          </div>
-        ))}
+        {thumbnails.map((thumbnail, index) => {
+          const key = `${thumbnail.thumbnail_key}-${index}`;
+          console.log("Rendering thumbnail with key:", key);
+          return (
+            <div key={key} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
+              <img src={thumbnail.thumbnailUrl} alt={thumbnail.title || "Thumbnail"} className="thumbnail" loading="lazy" />
+            </div>
+          );
+        })}
       </div>
       {isModalOpen && selectedVideo && (
-        <Modal onClose={handleCloseModal}>
-          <Video key={selectedVideo} videoSrc={selectedVideo} onClose={handleCloseModal} />
+        <Modal show={isModalOpen} onClose={handleCloseModal}>
+          <Video videoSrc={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-      <video key={selectedVideo} controls autoPlay muted>
-      <source src={selectedVideo} type="video/mp4" />
-      Your browser does not support the video tag.
-    </video>
+      
+    <p>Back</p>
+    </>}
+    {!filter && <DashboardFilter setFilter={setFilter} filter={filter}/>}
     </div>
   );
 }

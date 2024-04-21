@@ -9,15 +9,15 @@ export default function NavBar({sidebar, setSidebar}) {
   const user = useContext(AuthContext);
   const navigate = useNavigate();
 
-  // const handleSignIn = async () => {
-  //   try {
-  //     await signInWithGoogle();
-  //     setDropdown(false);
-  //     navigate("/dashboard");
-  //   } catch (error) {
-  //     console.error("Login failed:", error);
-  //   }
-  // };
+  const handleSignIn = async () => {
+    try {
+      await signInWithGoogle();
+      setDropdown(false);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Login failed:", error);
+    }
+  };
 
   const handleSignOut = async () => {
     signOut();
@@ -57,8 +57,8 @@ export default function NavBar({sidebar, setSidebar}) {
     } else {
       return (
         <div className="profile-menu">
-          <button onClick={signInWithGoogle}>Sign Up</button>
-          <button onClick={signInWithGoogle}>Login</button>
+          <button onClick={handleSignIn}>Sign Up</button>
+          <button onClick={handleSignIn}>Login</button>
         </div>
       );
     }
