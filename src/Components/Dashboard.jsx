@@ -56,11 +56,8 @@ console.log(selectedVideo)
       <DashboardFilter />
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => {
-          // Generate a composite key using the thumbnail key and the index
           const key = `${thumbnail.thumbnail_key}-${index}`;
-          // Log the key to the console
           console.log("Rendering thumbnail with key:", key);
-  
           return (
             <div key={key} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
               <img src={thumbnail.thumbnailUrl} alt={thumbnail.title || "Thumbnail"} className="thumbnail" loading="lazy" />
