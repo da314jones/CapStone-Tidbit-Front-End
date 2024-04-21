@@ -11,6 +11,7 @@ import https from "https";
 import Video from "./Video";
 import Modal from './Modal';
 import "./Dashboard.css";
+import DashboardFilter from "./DashboardFilter"
 const API = import.meta.env.VITE_API_URL;
 const s3Client = new S3Client({
   region: import.meta.env.VITE_AWS_REGION,
@@ -65,7 +66,7 @@ console.log(selectedVideo)
   }
   return (
     <div className="main-container">
-      <div className="videoList-container">
+      {/* <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => (
           <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
             <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
@@ -80,7 +81,8 @@ console.log(selectedVideo)
       <video key={selectedVideo} controls autoPlay muted>
       <source src={selectedVideo} type="video/mp4" />
       Your browser does not support the video tag.
-    </video>
+    </video> */}
+    <DashboardFilter/>
     </div>
   );
 }

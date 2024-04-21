@@ -1,10 +1,34 @@
 .mainFilter{
-    width: 100%;
+    width: 98%;
     height: 45vh;
-    border: 10px solid red;
+    /* box-shadow: 10px 5px 5px grey; */
+    
+    /* border: 10px solid red; */
 }
 
 .mainFilter img{
     width: 100%;
     height: 45vh;
+    box-shadow: 5px 10px rgb(187, 185, 185);
+    border-radius: 10px;
+    max-width: 80rem;
+    margin: 2rem 2rem 2rem 10rem;
+
+}
+
+.minorFilter{
+   
+    display: flex;
+    flex-direction: row;
+    margin-left: 10rem;
+    justify-content: space-evenly;
+    padding: 10px;
+    width: 78vw;
+}
+.minorFilter img{
+    
+}
+
+.FilterPage{
+    width: 78vw;
 }
