@@ -23,20 +23,20 @@ const DashboardFilter = () => {
               alt=""
             />
             <div>
-              <span>6 min ago</span>
+              {/* <span>6 min ago</span> */}
             </div>
           </div>
           <div className="space-y-2">
             <a rel="noopener noreferrer" href="#" className="block">
-              <h3>
+              {/* <h3>
                 Facere ipsa nulla corrupti praesentium pariatur architecto
-              </h3>
+              </h3> */}
             </a>
-            <p>
+            {/* <p>
               Lorem ipsum dolor sit amet consectetur, adipisicing elit.
               Repellat, excepturi. Lorem ipsum dolor sit amet consectetur,
               adipisicing elit. Repellat, excepturi.
-            </p>
+            </p> */}
           </div>
         </div>
       </div>
