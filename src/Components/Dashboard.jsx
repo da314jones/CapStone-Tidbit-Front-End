@@ -82,5 +82,4 @@ console.log(selectedVideo)
     {!filter && <DashboardFilter setFilter={setFilter} filter={filter}/>}
     </div>
   );
-  
 }
