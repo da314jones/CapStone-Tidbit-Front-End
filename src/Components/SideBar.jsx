@@ -98,7 +98,7 @@ export default function SideBar({ sidebar, setSidebar }) {
               </li>
               <li>
                 <NavLink
-                  to="/upload"
+                  to="/videos/edit"
                   // activeClassName="active"
                   className="sidebar-item"
                 >
@@ -111,7 +111,7 @@ export default function SideBar({ sidebar, setSidebar }) {
                   <FaFileUpload
                     style={{
                       transform:
-                        location.pathname === "/upload"
+                        location.pathname === "/videos/edit"
                           ? "scale(1.6)"
                           : "scale(1)",
                       display: "block",

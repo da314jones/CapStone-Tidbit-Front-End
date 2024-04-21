@@ -8,19 +8,9 @@
   position: sticky;
   top: 0;
   left: 0;
-  width: 80vw;
+  width: 70vw;
+  margin-left: 250px;
 }
-.profile-container {
-  align-items: center;
-  padding-top: 30px;
-  display: grid;
-  grid-template-columns: auto 1fr; /* Personal info on the left, videos on the right */
-  grid-gap: 20px; /* Add gap between grid items */
-  max-height: 95%;
-  overflow: scroll;
-
-}
-
 .profile-info {
   display: flex;
   flex-wrap: wrap;
@@ -28,17 +18,22 @@
   position: sticky;
   top: 0;
   left: 0;
+  z-index: 1; /* Ensure it stays above the scrolling content */
   background-color: #f6f6f8;
-  /* border: 2px solid #000000; */
   border-radius: 15px;
   padding: 20px;
   padding-bottom: 30px;
-  margin-left: 1.5vw;
   /* margin-left: 20px; */
   /* height: 600px; */
   /* width: 300px; */
   /* margin-right: 20px; */
-  width: 75vw;
+}
+
+.profile-container {
+  /* Adjust the margin to avoid overlapping with the profile-info */
+  margin-top: 20px; /* Adjust according to your layout */
+  max-height: calc(100vh - 150px); /* Adjust according to your layout */
+  overflow: auto;
 }
 
 /* .uploaded{
@@ -91,24 +86,28 @@
   color: black;
 } */
 
-.main-content {
-  display: flex; /* Keep the flex display for videos */
-  flex-direction: column;
-  /* border: 2px solid red; */
-  min-height: 45vh;
-  min-width: 70vw;
-  }
+.uploaded {
+  margin-top: 40px;
+  font-family: "Roboto", "Arial", sans-serif;
+    font-size: 30px;
+    font-weight: 800;
+}
 
-.tidbits {
+/* .main-content {
+  display: flex; 
+  flex-direction: column;
+}
+
+/* .tidbits {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
   max-height: 500px;
-}
+} */
 
 .videos-grid {
-  display: flex;
-  flex-direction: row;
+  /* display: flex;
+  flex-direction: row; */
   /* grid-template-columns: repeat(4, 1fr); /* Adjust the number of columns */
   /* grid-gap: 15px;  */
 }
@@ -124,10 +123,10 @@
 }
 
 
-.profile-video-card video {
+/* .profile-video-card video {
   width: 100%;
   height: auto;
-}
+} */
 
 .message-button {
   position: fixed;
@@ -164,25 +163,25 @@
 
 
 /* Media Queries */
-@media screen and (max-width: 844px) {
+/* @media screen and (max-width: 844px) {
   .profile-page {
     flex-direction: column;
-    padding: 90px; /* Reduce padding */
-    grid-gap: 10px; /* Reduce gap */
+    padding: 90px; 
+    grid-gap: 10px;
   }
 
   .profile-info {
-    margin-left: 0; /* Remove left margin */
+    margin-left: 0; 
   }
 }
 
 @media screen and (max-width: 480px) {
   .profile-picture {
-    width: 80px; /* Decrease picture size */
+    width: 80px; 
     height: 80px;
   }
 
   .profile-info {
-    padding: 10px; /* Decrease padding */
+    padding: 10px; 
   }
-}
+} */
