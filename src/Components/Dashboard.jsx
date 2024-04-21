@@ -25,6 +25,9 @@ export default function Dashboard() {
   const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filter, setFilter] = useState('')
+  console.log(filter)
+
 console.log(selectedVideo)
   useEffect(() => {
     fetch(`${API}/videos/index-thumbnails`)
@@ -66,7 +69,9 @@ console.log(selectedVideo)
   }
   return (
     <div className="main-container">
-      {/* <div className="videoList-container">
+
+      {filter && <>
+      <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => (
           <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
             <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
@@ -81,8 +86,10 @@ console.log(selectedVideo)
       <video key={selectedVideo} controls autoPlay muted>
       <source src={selectedVideo} type="video/mp4" />
       Your browser does not support the video tag.
-    </video> */}
-    <DashboardFilter/>
+    </video>
+    <p>Back</p>
+    </>}
+    {!filter && <DashboardFilter setFilter={setFilter} filter={filter}/>}
     </div>
   );
 }

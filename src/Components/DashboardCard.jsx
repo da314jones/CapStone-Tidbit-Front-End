@@ -1,20 +1,21 @@
 import React from 'react'
 import './DashboardCard.css'
 
-function DashboardCard({image, key, setFilter}) {
-    const handleFilter = () =>{
-        setFilter(key)
+function DashboardCard({image, imageKey, setFilter}) {
+    const handleFilter = () => {
+        setFilter(imageKey)
     }
   return (
-    <div className='DashboardCard'>
+    <div className='DashboardCard'  onClick={handleFilter}>
         {/* <div>
         
         </div> */}
             <img
               src={image}
-              alt={key}
-              onClick={handleFilter}
-            />
+              alt={imageKey}
+
+
+              />
         
       </div>
 

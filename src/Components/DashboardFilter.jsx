@@ -2,8 +2,7 @@ import React, { useEffect, useState } from "react";
 import './DashboardFilter.css'
 import DashboardCard from './DashboardCard'
 
-const DashboardFilter = () => {
-  const [filter, setFilter] = useState('')
+const DashboardFilter = ({filter, setFilter}) => {
   const imageFiltering = {
     Tech: "https://cdn.ces.tech/ces/media/articles/2022/october/innovation.jpg",
     Gaming: 'https://media.citizen.co.za/wp-content/uploads/2023/08/gaming-calendar-august-september-2023.png',
@@ -15,7 +14,7 @@ const DashboardFilter = () => {
 
   return (
     <div className='FilterPage'>
-      <div className='mainFilter'>
+      <div className='mainFilter' onClick={()=>setFilter('Cooking')}>
         <div>
           <div>
             <img
@@ -43,7 +42,7 @@ const DashboardFilter = () => {
       <div className='minorFilter'>
        {imageKeys.map((key, index)=>{
         if(index < 3){
-         return <DashboardCard image={imageFiltering[key]} key={key}/>
+         return <DashboardCard image={imageFiltering[key]} imageKey={key} key={key} setFilter={setFilter}/>
         }
        })}
        </div>
