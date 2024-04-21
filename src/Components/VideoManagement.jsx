@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { OTSession, OTPublisher, OTStreams, OTSubscriber } from "opentok-react";
-import "./VideoManagement.css"
+import "./VideoManagement.css";
 
 const API = import.meta.env.VITE_API_URL;
 const apiKey = import.meta.env.VITE_VONAGE_API_KEY;
@@ -123,25 +123,39 @@ export default function VideoManagement() {
 
   return (
     <div className="session-wrapper">
-  <div className="video-form-wrapper">
-    <div className="video-container">
-      {!isConnected ? (
-        <button onClick={startSession}>Connect Session</button>
-      ) : (
-        <OTSession
-          apiKey={apiKey}
-          sessionId={sessionId}
-          token={token}
-          onError={(error) => console.error(error)}
-        >
-          <OTPublisher properties={{ width: 800, height: 500 }} />
-          <OTStreams>
-            <OTSubscriber />
-          </OTStreams>
-          {!isRecording ? (
-            <button className="video-button" onClick={startRecording}>Start Recording</button>
+      <div className="video-form-wrapper">
+        <div className="video-container">
+          {!isConnected ? (
+            <button onClick={startSession}>
+              <img src="https://static.vecteezy.com/system/resources/previews/019/940/401/non_2x/recording-icon-on-transparent-background-free-png.png" /> <span className="button-text" >Start Recording Session</span>
+            </button>
           ) : (
-            <button className="video-button" onClick={stopRecording}>Stop Recording</button>
+            <OTSession
+              apiKey={apiKey}
+              sessionId={sessionId}
+              token={token}
+              onError={(error) => console.error(error)}
+            >
+              <OTPublisher properties={{ width: 800, height: 500 }} />
+              <OTStreams>
+                <OTSubscriber />
+              </OTStreams>
+              {!isRecording ? (
+                <button className="video-button" onClick={startRecording}>
+                  Start Recording
+                </button>
+              ) : (
+                <button className="video-button" onClick={stopRecording}>
+                  Stop Recording
+                </button>
+              )}
+              <button
+                className="video-button"
+                onClick={() => setIsConnected(false)}
+              >
+                End Recording Session
+              </button>
+            </OTSession>
           )}
           <button className="video-button" onClick={() => setIsConnected(false)}>End Session</button>
         </OTSession>
@@ -177,12 +191,51 @@ export default function VideoManagement() {
           required
         ></textarea>
 
-        <button className="form-button" type="submit">Submit Video Info</button>
-      </form>
-    </div>
-  </div>
-</div>
+//         </div>
+//         <div className="form-container">
+//           <form onSubmit={handleSubmit}>
+//             <input
+//               name="title"
+//               value={videoMeta.title}
+//               onChange={handleTextChange}
+//               placeholder="Title"
+//               required
+//             />
+//             <select
+//               name="category"
+//               value={videoMeta.category}
+//               onChange={handleTextChange}
+//               required
+//             >
+//               <option value="">Select Category</option>
+//               <option value="wood-work">Wood Work</option>
+//               <option value="tech">Tech</option>
+//               <option value="fried-cooking">Fried Cooking</option>
+//               <option value="hunting">Hunting</option>
+//               <option value="painting">Painting</option>
+//               <option value="astrology">Astrology</option>
+//               <option value="gardening">Gardening</option>
+//               <option value="pastries">Pastries</option>
+//               <option value="latin-dance">Latin Dance</option>
+//               <option value="literature">Literature</option>
+//               <option value="gaming">Gaming</option>
+//               <option value="economics">Ecomonomics</option>
+//             </select>
+//             <textarea
+//               className="video-summary"
+//               name="summary"
+//               value={videoMeta.summary}
+//               onChange={handleTextChange}
+//               placeholder="Summary"
+//               required
+//             ></textarea>
 
+            <button className="form-button" type="submit">
+              Submit Video
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
   );
 }
-
