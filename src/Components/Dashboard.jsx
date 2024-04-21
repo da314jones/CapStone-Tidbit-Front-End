@@ -91,7 +91,11 @@ console.log(selectedVideo)
           <Video key={selectedVideo} videoSrc={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-          </div>
+      <video key={selectedVideo} controls autoPlay muted>
+      <source src={selectedVideo} type="video/mp4" />
+      Your browser does not support the video tag.
+    </video>
+    </div>
   );
 }
 
