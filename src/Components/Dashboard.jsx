@@ -67,7 +67,7 @@ console.log(selectedVideo)
     <div className="main-container">
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => (
-          <div key={index} className="video-card" onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
+          <div key={index} className="video-card " onClick={() => handleVideoClick(thumbnail.thumbnail_key)}>
             <img src={thumbnail.thumbnailUrl} alt={thumbnail.title} className="thumbnail" loading="lazy" />
           </div>
         ))}
