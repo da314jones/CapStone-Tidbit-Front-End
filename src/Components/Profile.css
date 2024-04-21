@@ -154,6 +154,7 @@
   flex-direction: column;
   width: 50vw;
   margin-left: 200px;
+  min-height: 35vh;
   
 }
 
