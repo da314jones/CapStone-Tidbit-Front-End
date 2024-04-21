@@ -10,6 +10,9 @@ export default function Dashboard() {
   const [thumbnails, setThumbnails] = useState([]);
   const [selectedVideo, setSelectedVideo] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [filter, setFilter] = useState('')
+  console.log(filter)
+
 console.log(selectedVideo)
   useEffect(() => {
     fetch(`${API}/videos/index-thumbnails`)
@@ -55,7 +58,10 @@ console.log(selectedVideo)
 
   return (
     <div className="main-container">
-     
+
+
+      {filter && <>
+          
       <div className="videoList-container">
         {thumbnails.map((thumbnail, index) => {
           const key = `${thumbnail.thumbnail_key}-${index}`;
@@ -66,14 +72,21 @@ console.log(selectedVideo)
             </div>
           );
         })}
-
       </div>
       {isModalOpen && selectedVideo && (
         <Modal show={isModalOpen} onClose={handleCloseModal}>
           <Video videoSrc={selectedVideo} onClose={handleCloseModal} />
         </Modal>
       )}
-       <DashboardFilter />
+      
+//       <video key={selectedVideo} controls autoPlay muted>
+//       <source src={selectedVideo} type="video/mp4" />
+//       Your browser does not support the video tag.
+//     </video>
+      
+    <p>Back</p>
+    </>}
+    {!filter && <DashboardFilter setFilter={setFilter} filter={filter}/>}
     </div>
   );
   
